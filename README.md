@@ -15,6 +15,7 @@
 - Set up event-based system for player interaction with objects
 - Player can drag and drop objects that are within the player radius
 - Gates can be opened and closed by placing or removing "Box Keys" on or from pressure plates
+  
 https://github.com/user-attachments/assets/9d7e74d4-3c4b-4a7c-97a1-03286b3609f0
 
 
