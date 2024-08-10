@@ -9,3 +9,13 @@
 - Look movement: Player looks at cursor when it moves
 
 ![Aug-08-2024 18-20-25](https://github.com/user-attachments/assets/d6b5cb85-1283-4a2c-8da1-973e2693ec4a)
+
+### Day 2:
+- Designed sequence diagram for player interaction with objects and UMLs for gates, triggers, and interactable objects
+- Set up event-based system for player interaction with objects
+- Player can drag and drop objects that are within the player radius
+- Gates can be opened and closed by placing or removing "Box Keys" on or from pressure plates
+https://github.com/user-attachments/assets/9d7e74d4-3c4b-4a7c-97a1-03286b3609f0
+
+
+
