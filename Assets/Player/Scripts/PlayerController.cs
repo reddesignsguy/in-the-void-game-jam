@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _runSpeed = 5;
     [SerializeField]
+    private float _interactionRadius = 2.8f;
+    [SerializeField]
     private bool _gravityOn = true;
 
     private DefaultPlayerActions _playerActions;
@@ -46,6 +48,8 @@ public class PlayerController : MonoBehaviour
         _jump.performed += OnJump;
         _look.performed += OnLooking;
         _interact.performed += OnInteract;
+        _interact.canceled += OnCancelInteract;
+
     }
 
     private void OnDisable()
@@ -55,6 +59,14 @@ public class PlayerController : MonoBehaviour
         _interact.Disable();
         _look.Disable();
         _interact.Disable();
+    }
+
+    private void Update()
+    {
+        if (_interact.IsPressed() && !mouseWithinRadius())
+        {
+            EventsManager.instance.CancelInteract();
+        }
     }
 
     private void FixedUpdate()
@@ -122,12 +134,35 @@ public class PlayerController : MonoBehaviour
             _sprite.flipX = false;
     }
 
+    /* Invokes the Interact event if the mouse position is within a certain radius of the playuer
+     * 
+     */
     private void OnInteract(InputAction.CallbackContext obj)
     {
-        if (!_gravityOn)
-            enableGravity();
-        else
-            disableGravity();
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
+
+            float distToPlayer = (mousePos - transform.position).magnitude;
+
+            bool mousePosIsWithinPlayerRadius = distToPlayer < _interactionRadius;
+
+            if (mousePosIsWithinPlayerRadius)
+            {
+                EventsManager.instance.Interact(mousePos);
+            }
+        
+    }
+
+    private void OnCancelInteract(InputAction.CallbackContext obj) => EventsManager.instance.CancelInteract();
+
+    private bool mouseWithinRadius()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
+        float distToPlayer = (mousePos - transform.position).magnitude;
+
+        return distToPlayer < _interactionRadius;
     }
 
     private void enableGravity()
