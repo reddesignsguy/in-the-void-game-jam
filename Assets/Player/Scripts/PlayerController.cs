@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _jump;
     private InputAction _interact;
     private InputAction _look;
+    private InputAction _changeGravity;
 
 
     void Awake()
@@ -44,13 +46,18 @@ public class PlayerController : MonoBehaviour
         _interact.Enable();
         _look = _playerActions.Player.Look;
         _look.Enable();
+        _changeGravity = _playerActions.Player.ChangeGravity;
+        _changeGravity.Enable();
 
         _jump.performed += OnJump;
         _look.performed += OnLooking;
         _interact.performed += OnInteract;
         _interact.canceled += OnCancelInteract;
+        _changeGravity.performed += OnChangeGravity;
+        _changeGravity.canceled += OnStopChangeGravity;
 
     }
+
 
     private void OnDisable()
     {
@@ -63,15 +70,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Cancel any interactions with objects if the cursor is far away from player
         if (_interact.IsPressed() && !mouseWithinRadius())
         {
             EventsManager.instance.CancelInteract();
+        }
+
+        if (_changeGravity.IsPressed() && !mouseWithinRadius())
+        {
+            EventsManager.instance.CancelChangeGravity();
         }
     }
 
     private void FixedUpdate()
     {
         _gravityOn = _rb.gravityScale != 0;
+
         // ==============================
         // Handle player movement
         // ==============================
@@ -152,6 +166,24 @@ public class PlayerController : MonoBehaviour
             }
         
     }
+
+
+    private void OnChangeGravity(InputAction.CallbackContext context)
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
+        float distToPlayer = (mousePos - transform.position).magnitude;
+
+        bool mousePosIsWithinPlayerRadius = distToPlayer < _interactionRadius;
+
+        if (mousePosIsWithinPlayerRadius)
+        {
+            EventsManager.instance.ChangeGravity(mousePos);
+        }
+    }
+
+    private void OnStopChangeGravity(InputAction.CallbackContext context) => EventsManager.instance.CancelChangeGravity();
 
     private void OnCancelInteract(InputAction.CallbackContext obj) => EventsManager.instance.CancelInteract();
 

@@ -5,8 +5,7 @@ using UnityEngine;
 public abstract class DoorTrigger : MonoBehaviour
 {
     [SerializeField]
-    private Door _door;
-
+    protected Door _door;
 
     protected virtual void OpenDoor()
     {

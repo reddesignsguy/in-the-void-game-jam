@@ -40,4 +40,26 @@ public class EventsManager : MonoBehaviour
             onCancelInteract();
         }
     }
+
+    public event Action <Vector2> onChangeGravity;
+
+
+    public void ChangeGravity(Vector2 mousePos)
+    {
+        if (onChangeGravity != null)
+        {
+            onChangeGravity(mousePos);
+        }
+    }
+
+    public event Action onCancelChangeGravity;
+
+
+    public void CancelChangeGravity()
+    {
+        if (onCancelChangeGravity != null)
+        {
+            onCancelChangeGravity();
+        }
+    }
 }

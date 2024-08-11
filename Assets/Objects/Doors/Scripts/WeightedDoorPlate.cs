@@ -17,14 +17,16 @@ public class WeightedDoorPlate : DoorTrigger
         _collider = GetComponent<BoxCollider2D>();
     }
 
-    
-    protected override void OpenDoor()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.tag == "BoxKey")
+            OpenDoor();
     }
 
-    protected override void CloseDoor()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.LogError("Close door not implemented");
+        if (collision.gameObject.tag == "BoxKey")
+            CloseDoor();
     }
+
 }
