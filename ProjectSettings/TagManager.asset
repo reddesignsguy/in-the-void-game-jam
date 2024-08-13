@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Wind
+    uniqueID: 1192813515
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

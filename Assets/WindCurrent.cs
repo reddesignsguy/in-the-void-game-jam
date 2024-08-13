@@ -5,20 +5,28 @@ using UnityEngine;
 public class WindCurrent : MonoBehaviour
 {
     private BoxCollider2D _collider;
+    [SerializeField]
+    private WindParticleSystem _particleSystem;
     public GravityDirection _direction;
     public float _absoluteForce;
 
     private void Awake()
     {
         _collider = GetComponent<BoxCollider2D>();
+
+        // Set up particle system
+        Vector2 position = new Vector2();
+    }
+
+    private void Start()
+    {
+        _particleSystem.Setup(_collider.bounds, _direction);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground")
             return;
-
-        print("Collided with obj: " + collision.gameObject);
 
         GameObject obj = collision.gameObject;
 
