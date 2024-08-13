@@ -19,6 +19,7 @@
 https://github.com/user-attachments/assets/9d7e74d4-3c4b-4a7c-97a1-03286b3609f0
 
 ### Day 4:
+- UI for gravity selection!
 - Created wind currents which can blow objects or players away
 - If an object is behind another object in a wind current, that object is not affected by the wind current
 - Some basic levels created with the help of a "Mechanics matrix" which helped me play around with 2 different mechanics at a time
