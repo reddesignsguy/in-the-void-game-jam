@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         // Forces are manipulated
         else
         {
-            Vector2 force = inputDirection * 5000 * Time.deltaTime;
+            Vector2 force = inputDirection * 2000 * Time.deltaTime;
             _rb.AddForce(force);
         }
     }

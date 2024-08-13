@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum GravityDirection
@@ -20,8 +21,8 @@ public class Interactable : MonoBehaviour
     private SpriteRenderer _renderer;
 
     // UI for selecting gravity
-    public SharedReferences _sharedReferences;
-    private GameObject _gravitySelector;
+    public GameObject _gravitySelector;
+    private Animator _selectorAnimator;
 
     private Coroutine SelectGravityCoroutine;
 
@@ -29,6 +30,11 @@ public class Interactable : MonoBehaviour
 
     private GravityDirection _tempGravityDirection;  // only used in SelectGravityCoroutine
     private GravityDirection _gravityDirection;
+
+    // TODO -- Refactor force and put it in some global SO
+    public float _forceMagnitude = 10;
+    // TODO  -- refactor
+    private Vector2 velocity = Vector2.zero; // Internal velocity used by SmoothDamp
 
     private void Awake()
     {
@@ -44,8 +50,10 @@ public class Interactable : MonoBehaviour
         EventsManager.instance.onChangeGravity += OnChangeGravity;
         EventsManager.instance.onCancelChangeGravity += OnCancelChangeGravity;
 
-        //_gravitySelector = _sharedReferences._gravitySelector;
         _gravityDirection = GravityDirection.NONE;
+
+        _gravitySelector.SetActive(false);
+        _selectorAnimator = _gravitySelector.GetComponent<Animator>();
 
         initializeMass();
     }
@@ -57,14 +65,21 @@ public class Interactable : MonoBehaviour
             return;
 
         // Initialize gravity selector
-        //_gravitySelector.SetActive(true);
+        _gravitySelector.SetActive(true);
         Vector2 thisObjPos = transform.position;
-        //_gravitySelector.transform.position = thisObjPos;
-        //print(_gravitySelector.transform.position);
 
+        // Annoying edge case: Just ignore
+        thisObjPos.y += _renderer.size.y / 2;
+        _gravitySelector.transform.position = thisObjPos;
+        thisObjPos.y -= _renderer.size.y / 2;
+
+        // Handle gravity selection separately
         SelectGravityCoroutine = StartCoroutine(SelectGravity(thisObjPos));
 
+        // Pause physics system
+        pauseTime(true);
     }
+
 
     public void OnCancelChangeGravity()
     {
@@ -88,11 +103,15 @@ public class Interactable : MonoBehaviour
         _rb.velocity *= 0;
 
         // Gravity selector logic
-        //_gravitySelector.SetActive(false);
+        _gravitySelector.SetActive(false);
+
+        pauseTime(false);
     }
 
     public void giveControl(Vector2 mousePos)
     {
+        _rb.velocity *= 0;
+
         // Mouse is over this object
         if (_collider.OverlapPoint(mousePos))
         {
@@ -102,6 +121,7 @@ public class Interactable : MonoBehaviour
 
     public void removeControl()
     {
+
            _beingControlled = false;
     }
 
@@ -114,9 +134,7 @@ public class Interactable : MonoBehaviour
 
             // Check which cardinal direction the player wants to select
             Vector2 directionVector = (Vector2) mousePos - centerOfSelector;
-            print(directionVector);
             GravityDirection direction = vectorToSelectedDirection(directionVector);
-            print( direction);
             setSelectedGravity(direction);
 
 
@@ -126,10 +144,8 @@ public class Interactable : MonoBehaviour
 
     private GravityDirection vectorToSelectedDirection(Vector2 vector)
     {
-        // TODO -- not yet implemented
-
         // Edge: Vector not large enough
-        if (Mathf.Abs(vector.x) < 0.4 && Mathf.Abs(vector.y) < 0.4)
+        if (Mathf.Abs(vector.x) < 0.45 && Mathf.Abs(vector.y) < 0.45)
             return GravityDirection.NONE;
 
         // The direction is in the axis that has the greatest value
@@ -146,8 +162,38 @@ public class Interactable : MonoBehaviour
     /* Updates gravity selection UI and the temporary gravity variable*/
     private void setSelectedGravity(GravityDirection direction)
     {
+        // If a new dir is selected, play appropriate anims
+        if (direction != _tempGravityDirection)
+        {
+            setSelectionAnimation(direction);
+        }
+
         _tempGravityDirection = direction;
 
+    }
+
+    private  void setSelectionAnimation (GravityDirection direction)
+    {
+        switch (direction)
+        {
+            case GravityDirection.NORTH:
+                _selectorAnimator.SetTrigger("North");
+                print("receiving north signal");
+                return;
+            case GravityDirection.SOUTH:
+                _selectorAnimator.SetTrigger("South");
+                return;
+            case GravityDirection.EAST:
+                _selectorAnimator.SetTrigger("East");
+                return;
+            case GravityDirection.WEST:
+                _selectorAnimator.SetTrigger("West");
+                return;
+            default:
+                _selectorAnimator.SetTrigger("None");
+                return;
+
+        }
     }
 
 
@@ -158,7 +204,10 @@ public class Interactable : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
 
-            _rb.MovePosition(mousePos);
+            // Smoothly interpolate the Rigidbody's position towards the target
+            Vector2 targetPos = Vector2.SmoothDamp(_rb.position, mousePos, ref velocity, 0.12f);
+
+            _rb.MovePosition(targetPos);
         }
 
         Vector2 force = getForceFromGravityDirection(_gravityDirection);
@@ -183,12 +232,21 @@ public class Interactable : MonoBehaviour
                 break;
         }
 
-        return force;
+        return force * _forceMagnitude;
     }
 
+    // Mass is based on scale
     private void initializeMass()
     {
-        // TODO -- Mass is based on widht/height of sprite
-        //_rb.mass = 
+        Vector3 scale = transform.localScale;
+        _rb.mass = scale.x * scale.y * 2;
+    }
+
+    private void pauseTime(bool pause)
+    {
+        if (pause)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
     }
 }
