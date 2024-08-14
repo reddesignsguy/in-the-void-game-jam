@@ -19,6 +19,7 @@ public class Interactable : MonoBehaviour
     private Rigidbody2D _rb;
     private BoxCollider2D _collider;
     private SpriteRenderer _renderer;
+    private AudioSource _audioSource;
 
     // UI for selecting gravity
     public GameObject _gravitySelector;
@@ -41,6 +42,7 @@ public class Interactable : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -104,6 +106,9 @@ public class Interactable : MonoBehaviour
 
         // Gravity selector logic
         _gravitySelector.SetActive(false);
+
+        // SFX
+        _audioSource.Play();
 
         pauseTime(false);
     }

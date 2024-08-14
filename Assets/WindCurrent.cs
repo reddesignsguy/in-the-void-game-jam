@@ -56,6 +56,7 @@ public class WindCurrent : MonoBehaviour
         int layerToIgnore = LayerMask.NameToLayer("IgnoreLayer");
         int layerMask = ~(1 << layerToIgnore); // Invert to ignore this layer
 
+        int numHits = 0;
         foreach (Vector2 origin in origins)
         {
             Vector2 landingPoint;
@@ -82,15 +83,16 @@ public class WindCurrent : MonoBehaviour
 
             // Send raycast
             RaycastHit2D[] hits = Physics2D.RaycastAll(origin, landingPoint - origin);
+
             foreach (RaycastHit2D hit in hits)
             {
                 if (hit.collider != null && hit.collider.gameObject != go && hit.collider.gameObject.tag == "BoxKey")
-                {
-                    print("wind current blocked");
-                    return true;
-                }
+                    numHits += 1;
             }
         }
+
+        if (numHits == 3)
+            return true;
 
         return false;
     }

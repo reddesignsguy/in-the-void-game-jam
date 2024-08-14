@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     private BoxCollider2D _collider;
     private SpriteRenderer _sprite;
+    private AudioSource _audioSource;
 
     private InputAction _move;
     private InputAction _jump;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -104,6 +106,11 @@ public class PlayerController : MonoBehaviour
         // Forces are manipulated
         else
         {
+            if (inputDirection.magnitude != 0 && !_audioSource.isPlaying)
+                _audioSource.Play();
+            else if (inputDirection.magnitude == 0)
+                _audioSource.Stop();
+
             Vector2 force = inputDirection * 2000 * Time.deltaTime;
             _rb.AddForce(force);
         }

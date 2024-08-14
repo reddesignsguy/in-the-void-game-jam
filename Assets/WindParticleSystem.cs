@@ -36,13 +36,13 @@ public class WindParticleSystem : MonoBehaviour
         {
             // Must shoot from the bottom of collider
             case GravityDirection.NORTH:
-                position = new Vector2(0, 1);
+                position = new Vector2((bounds.min.x + bounds.max.x) / 2.0f, bounds.min.y);
                 break;
             case GravityDirection.SOUTH:
-                position = new Vector2(0, -1);
+                position = new Vector2((bounds.min.x + bounds.max.x) / 2.0f, bounds.max.y);
                 break;
             case GravityDirection.EAST:
-                position = new Vector2(1, 0);
+                position = new Vector2(bounds.min.x, (bounds.min.y + bounds.max.y) / 2.0f);
                 break;
             case GravityDirection.WEST:
                 position = new Vector2(bounds.max.x, (bounds.min.y + bounds.max.y) / 2.0f);
