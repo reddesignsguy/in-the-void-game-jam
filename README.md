@@ -1,6 +1,10 @@
+![image](https://github.com/user-attachments/assets/7caeb7ef-d69a-4800-95fa-faabdbd89680)
+
 # "Who Is Out There?" -- game jam submission!
 ### Play the game here: https://vexeo.itch.io/who-is-out-there
+### System Design: ![SystemDesigns drawio](https://github.com/user-attachments/assets/a8432da5-581e-453e-b887-1a65a100b403)
 
+## Dev Log
 ### Day 1:
 - Created a [sequence diagram](https://lucid.app/lucidchart/ca41642e-a0b1-4818-abf1-f286c3cda8b7/edit?viewport_loc=-1731%2C-975%2C2647%2C2090%2C0_0&invitationId=inv_a9cab8f3-69ea-46f7-8433-a5a2e942a5ea) for setting up the player controls and future system designs
 - Created a [game jam doc](https://docs.google.com/document/d/1ImsfMdIiXVEMHOgYnHIrc0tX-SKtv9j9JUVwgk6GeVk/edit?usp=sharing) with ideas for the jam
