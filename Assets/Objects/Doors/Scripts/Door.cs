@@ -9,7 +9,11 @@ public class Door : MonoBehaviour
     private Animator _animator;
     private BoxCollider2D _collider;
 
+    public AudioSource _gateOpenSound;
+    public AudioSource _gateCloseSound;
+
     private DoorState _doorState;
+
 
     private void Awake()
     {
@@ -21,11 +25,13 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
+        _gateOpenSound.Play();
             _animator.SetBool("openDoor", true);
     }
 
     public void CloseDoor()
     {
+        _gateCloseSound.Play();
             _animator.SetBool("openDoor", false);
     }
 }

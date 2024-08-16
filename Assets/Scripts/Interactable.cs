@@ -19,7 +19,9 @@ public class Interactable : MonoBehaviour
     private Rigidbody2D _rb;
     private BoxCollider2D _collider;
     private SpriteRenderer _renderer;
-    private AudioSource _audioSource;
+
+    public AudioSource _gravitySound;
+    public AudioSource _pickupSound;
 
     // UI for selecting gravity
     public GameObject _gravitySelector;
@@ -30,7 +32,9 @@ public class Interactable : MonoBehaviour
     private bool _beingControlled;
 
     private GravityDirection _tempGravityDirection;  // only used in SelectGravityCoroutine
+    [SerializeField]
     private GravityDirection _gravityDirection;
+    private Vector2 _spawnPosition;
 
     // TODO -- Refactor force and put it in some global SO
     public float _forceMagnitude = 10;
@@ -39,10 +43,10 @@ public class Interactable : MonoBehaviour
 
     private void Awake()
     {
+        _spawnPosition = transform.position;
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
-        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -52,12 +56,22 @@ public class Interactable : MonoBehaviour
         EventsManager.instance.onChangeGravity += OnChangeGravity;
         EventsManager.instance.onCancelChangeGravity += OnCancelChangeGravity;
 
-        _gravityDirection = GravityDirection.NONE;
+        if (_gravityDirection == null)
+            _gravityDirection = GravityDirection.NONE;
 
         _gravitySelector.SetActive(false);
         _selectorAnimator = _gravitySelector.GetComponent<Animator>();
 
         initializeMass();
+    }
+
+    private void Update()
+    {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                print("restarting");
+                ResetState();
+            }
     }
 
     public void OnChangeGravity(Vector2 mousePos)
@@ -80,6 +94,9 @@ public class Interactable : MonoBehaviour
 
         // Pause physics system
         pauseTime(true);
+
+        // SFX
+        _pickupSound.Play();
     }
 
 
@@ -108,7 +125,7 @@ public class Interactable : MonoBehaviour
         _gravitySelector.SetActive(false);
 
         // SFX
-        _audioSource.Play();
+        _gravitySound.Play();
 
         pauseTime(false);
     }
@@ -253,5 +270,11 @@ public class Interactable : MonoBehaviour
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
+    }
+
+    public void ResetState()
+    {
+        transform.position = _spawnPosition;
+        _gravityDirection = GravityDirection.NONE;
     }
 }

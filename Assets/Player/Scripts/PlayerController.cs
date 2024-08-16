@@ -20,7 +20,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     private BoxCollider2D _collider;
     private SpriteRenderer _sprite;
-    private AudioSource _audioSource;
+    private ParticleSystem _particleSystem;
+
+    private bool _playedAirBurstIntro = false;
+    public AudioSource _airBurstLoop;
+    public AudioSource _airBurstStart;
+    public AudioSource _airBurstEnd;
 
     private InputAction _move;
     private InputAction _jump;
@@ -29,13 +34,18 @@ public class PlayerController : MonoBehaviour
     private InputAction _changeGravity;
 
 
+    private Vector2 _spawnPoint;
+
+
     void Awake()
     {
+        _spawnPoint = transform.position;
         _playerActions = new DefaultPlayerActions();
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _sprite = GetComponent<SpriteRenderer>();
-        _audioSource = GetComponent<AudioSource>();
+        _particleSystem = GetComponentInChildren<ParticleSystem>();
+        _particleSystem.Stop();
     }
 
     private void OnEnable()
@@ -51,6 +61,8 @@ public class PlayerController : MonoBehaviour
         _changeGravity = _playerActions.Player.ChangeGravity;
         _changeGravity.Enable();
 
+        _move.started += OnStartMove;
+        _move.canceled += OnCancelMove;
         _jump.performed += OnJump;
         _look.performed += OnLooking;
         _interact.performed += OnInteract;
@@ -60,6 +72,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnCancelMove(InputAction.CallbackContext context)
+    {
+        _airBurstEnd.Play();
+        _airBurstStart.Stop();
+        _airBurstLoop.Stop();
+
+        _particleSystem.Stop();
+    }
+
+    private void OnStartMove(InputAction.CallbackContext context)
+    {
+        _airBurstStart.Play();
+        _airBurstEnd.Stop();
+        _airBurstLoop.Stop();
+
+        _particleSystem.Play();
+    }
 
     private void OnDisable()
     {
@@ -72,15 +101,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // TODO - refactor resetting the level
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _rb.velocity *= 0;
+            transform.position = _spawnPoint;
+        }
+
         // Cancel any interactions with objects if the cursor is far away from player
         if (_interact.IsPressed() && !mouseWithinRadius())
         {
             EventsManager.instance.CancelInteract();
-        }
-
-        if (_changeGravity.IsPressed() && !mouseWithinRadius())
-        {
-            EventsManager.instance.CancelChangeGravity();
         }
     }
 
@@ -106,10 +137,15 @@ public class PlayerController : MonoBehaviour
         // Forces are manipulated
         else
         {
-            if (inputDirection.magnitude != 0 && !_audioSource.isPlaying)
-                _audioSource.Play();
-            else if (inputDirection.magnitude == 0)
-                _audioSource.Stop();
+            bool isMoving = inputDirection.magnitude != 0;
+            if (isMoving && !_airBurstStart.isPlaying && !_airBurstLoop.isPlaying)
+            {
+                 _airBurstLoop.Play();
+            }
+            else if (!isMoving)
+            {
+                _airBurstLoop.Stop();
+            }
 
             Vector2 force = inputDirection * 2000 * Time.deltaTime;
             _rb.AddForce(force);
@@ -218,6 +254,15 @@ public class PlayerController : MonoBehaviour
         _gravityOn = false;
     }
 
+    public void setSpawnPoint(Vector2 pos)
+    {
+        _spawnPoint = pos;
+    }
 
+    public void moveToSpawnPoint()
+    {
+        _rb.velocity *= 0;
+        transform.position = _spawnPoint;
+    }
 
 }

@@ -40,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background-2
+    uniqueID: 2722008655
+    locked: 0
+  - name: Background
+    uniqueID: 2505226167
+    locked: 0
   - name: Wind
     uniqueID: 1192813515
     locked: 0
