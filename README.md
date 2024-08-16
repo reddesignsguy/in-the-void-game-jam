@@ -1,6 +1,5 @@
 ![image](https://github.com/user-attachments/assets/7caeb7ef-d69a-4800-95fa-faabdbd89680)
 
-# "Who Is Out There?" -- game jam submission!
 ### Play the game here: https://vexeo.itch.io/who-is-out-there
 ### System Design: ![SystemDesigns drawio](https://github.com/user-attachments/assets/a8432da5-581e-453e-b887-1a65a100b403)
 
