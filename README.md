@@ -1,5 +1,6 @@
-# IN THE VOID -- game jam submission!
-## Devlog
+# "Who Is Out There?" -- game jam submission!
+### Play the game here: https://vexeo.itch.io/who-is-out-there
+
 ### Day 1:
 - Created a [sequence diagram](https://lucid.app/lucidchart/ca41642e-a0b1-4818-abf1-f286c3cda8b7/edit?viewport_loc=-1731%2C-975%2C2647%2C2090%2C0_0&invitationId=inv_a9cab8f3-69ea-46f7-8433-a5a2e942a5ea) for setting up the player controls and future system designs
 - Created a [game jam doc](https://docs.google.com/document/d/1ImsfMdIiXVEMHOgYnHIrc0tX-SKtv9j9JUVwgk6GeVk/edit?usp=sharing) with ideas for the jam
@@ -36,7 +37,11 @@ https://github.com/user-attachments/assets/e3f37cf7-b525-4fe8-9e91-6a0eedfb94b3
 - Parallax effect
 - Added some sound FX
 
-
-
 https://github.com/user-attachments/assets/c3936885-1724-4591-bb5c-d1739f26e440
+
+### Day 6/7:
+- 5 more levels
+- Music integration
+- More sprites
+- Submitted!
 
