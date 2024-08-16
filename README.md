@@ -36,6 +36,10 @@ https://github.com/user-attachments/assets/e3f37cf7-b525-4fe8-9e91-6a0eedfb94b3
 - Parallax effect
 - Added some sound FX
 
+### Day 6/7:
+- 5 more levels
+- Music integration
+
 
 
 https://github.com/user-attachments/assets/c3936885-1724-4591-bb5c-d1739f26e440
