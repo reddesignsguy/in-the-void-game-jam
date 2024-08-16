@@ -27,3 +27,16 @@ https://github.com/user-attachments/assets/9d7e74d4-3c4b-4a7c-97a1-03286b3609f0
 
 https://github.com/user-attachments/assets/e3f37cf7-b525-4fe8-9e91-6a0eedfb94b3
 
+### Day 5:
+- Level design
+- Fixed some bugs with wind current
+- Particle wind effect for wind currents which reveal areas that are unaffected by wind using collision detection
+- Lighting
+- Sprite work
+- Parallax effect
+- Added some sound FX
+
+
+
+https://github.com/user-attachments/assets/c3936885-1724-4591-bb5c-d1739f26e440
+
