@@ -12,6 +12,7 @@ public class WindParticleSystem : MonoBehaviour
         _sys = GetComponentInChildren<ParticleSystem>();
     }
 
+    // Sets up the transformation of the particle emitter
     public void Setup(Bounds colliderBounds, GravityDirection direction)
     {
         // Position
@@ -28,15 +29,17 @@ public class WindParticleSystem : MonoBehaviour
 
     }
 
+    /* The optimal position is the center of the side of a BoxCollider that is opposite to the given gravity direction*/
     private Vector2 GetOptimalPosition(Bounds bounds, GravityDirection direction)
     {
         Vector2 position = new Vector2(0, 0);
         switch (direction)
         {
-            // Must shoot from the bottom of collider
+            // Eg 1) Must shoot from the bottom of collider
             case GravityDirection.NORTH:
                 position = new Vector2((bounds.min.x + bounds.max.x) / 2.0f, bounds.min.y);
                 break;
+            // Eg 2) Must shoot from the top of collider
             case GravityDirection.SOUTH:
                 position = new Vector2((bounds.min.x + bounds.max.x) / 2.0f, bounds.max.y);
                 break;
@@ -51,6 +54,7 @@ public class WindParticleSystem : MonoBehaviour
         return position;
     }
 
+    /* The optimal rotation is one where the emitter points in the given direction */
     private float GetOptimalRotation(GravityDirection direction)
     {
         float rotation = 0;
@@ -74,6 +78,7 @@ public class WindParticleSystem : MonoBehaviour
         return rotation;
     }
 
+    /* The optimal radius is half the length of the side of the BoxCollider that the emitter is positioned at*/
     private float GetOptimalRadius(Bounds bounds, GravityDirection direction)
     {
         float radius;

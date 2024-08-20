@@ -12,15 +12,11 @@ public class WeightedDoorPlate : DoorTrigger
     [SerializeField]
     private Color _onColor;
 
-    private Animator _animator;
-    private BoxCollider2D _collider;
+
     private SpriteRenderer _childRenderer;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _collider = GetComponent<BoxCollider2D>();
-
         _childRenderer = transform.Find("Base")?.GetComponent<SpriteRenderer>();
     }
 
