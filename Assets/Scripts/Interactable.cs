@@ -146,6 +146,7 @@ public class Interactable : MonoBehaviour
 
     public void ResetState()
     {
+        _rb.velocity *= 0;
         transform.position = _spawnPosition;
         _gravityDirection = GravityDirection.NONE;
     }

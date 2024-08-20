@@ -82733,7 +82733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784431665}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.93, y: 18.78, z: 0.088054426}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -135113,6 +135113,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3816649305870703435, guid: e66e6cf5d6a5049d9b80cd311523591b, type: 3}
   m_PrefabInstance: {fileID: 1185922621}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1203176324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203176326}
+  - component: {fileID: 1203176325}
+  m_Layer: 0
+  m_Name: GravitySelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1203176325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203176324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2861d3830ce644dc38c56bbcff3a7beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GravitySelectorUI: {fileID: 784431665}
+--- !u!4 &1203176326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203176324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1217872486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7836145516841863668, guid: 7c8e9260361b145af906ba5f6ce29b8c, type: 3}
@@ -139472,9 +139517,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 1500
+  _airBoostForce: 2000
   _runSpeed: 5
   _interactionRadius: 5
-  _gravityOn: 1
+  _gravityOn: 0
   _airBurstLoop: {fileID: 1969081913}
   _airBurstStart: {fileID: 1969081915}
   _airBurstEnd: {fileID: 1969081914}
@@ -141500,11 +141546,12 @@ SceneRoots:
   - {fileID: 1376610683}
   - {fileID: 1656078475}
   - {fileID: 1969081909}
-  - {fileID: 784431666}
   - {fileID: 305335354}
   - {fileID: 1321058195}
   - {fileID: 1718238249}
   - {fileID: 1525430667}
   - {fileID: 584366885}
   - {fileID: 2068580119}
+  - {fileID: 1203176326}
   - {fileID: 1126944920}
+  - {fileID: 784431666}
