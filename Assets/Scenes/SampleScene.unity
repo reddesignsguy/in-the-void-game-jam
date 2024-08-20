@@ -82719,7 +82719,7 @@ GameObject:
   - component: {fileID: 784431667}
   - component: {fileID: 784431668}
   m_Layer: 0
-  m_Name: GravitySelector
+  m_Name: GravitySelectorUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

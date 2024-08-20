@@ -1,0 +1,159 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GravitySelector : MonoBehaviour
+{
+    // SINGLETON
+    public static GravitySelector _instance { get; private set; }
+
+    // Gravity selector UI and components
+    [SerializeField]
+    private GameObject GravitySelectorUI;
+    private Animator _gravitySelectorAnimator;
+
+    // Gets run when gravity is being manipulated
+    private Coroutine SelectGravityCoroutine;
+
+    public GravityDirection _selectedGravityDirection { get; private set; }
+    public int _interactableInstanceID { get; private set; } // The ID of the interactable object whose gravity is being selected for
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+
+        GravitySelectorUI.SetActive(false);
+        _gravitySelectorAnimator = GravitySelectorUI.GetComponent<Animator>();
+    }
+
+    /* Initiates the process of selecting a gravity direction
+     * EDGE: halfOfObjHeight is used to handle a small edge case relating to the coordinates of the obj
+     */
+    public void StartSelection(int objID, Vector2 objectPos, float halfOfObjHeight)
+    {
+        _interactableInstanceID = objID;
+
+        // Initialize gravity selector
+        GravitySelectorUI.SetActive(true);
+
+        // Annoying edge case: Just ignore
+        objectPos.y += halfOfObjHeight;
+        GravitySelectorUI.transform.position = objectPos;
+        objectPos.y -= halfOfObjHeight;
+
+        // Handle gravity selection separately
+        SelectGravityCoroutine = StartCoroutine(SelectGravity(objectPos));
+
+        // Pause physics system
+        pauseTime(true);
+    }
+
+    /*
+     * For every frame, this function evaluates the gravity direction that the player is selecting 
+     * and updates this object's state accordingly
+     */
+    private IEnumerator SelectGravity(Vector2 centerOfSelector)
+    {
+        while (true)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
+
+            // Check which cardinal direction the player wants to select
+            Vector2 directionVector = (Vector2)mousePos - centerOfSelector;
+            GravityDirection direction = vectorToSelectedDirection(directionVector);
+            setSelectedGravity(direction);
+
+
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public void EndSelection()
+    {
+        if (SelectGravityCoroutine == null)
+            return;
+
+        // Coroutine logic
+        StopCoroutine(SelectGravityCoroutine);
+        SelectGravityCoroutine = null;
+
+        // Gravity selector logic
+        GravitySelectorUI.SetActive(false);
+
+        // Time logic
+        pauseTime(false);
+    }
+
+    /* 
+        Algorithm: The gravity direction that the player wants to select for this object is calculated by:
+        1. Getting the vector from the center of the gravity selector to the current mouse position.
+        2. If the magnitude of the X component is greater than the Y component, then the player is trying to select either a west or east direction
+            i.e: a horizontal one... and the true is vice versa.
+        3. The sign of the corresponding vector component indicates which of the two directions-- in the case of the above, west or east-- is the selected direction
+    */
+    private GravityDirection vectorToSelectedDirection(Vector2 vector)
+    {
+        // Edge: Vector not large enough
+        if (Mathf.Abs(vector.x) < 0.45 && Mathf.Abs(vector.y) < 0.45)
+            return GravityDirection.NONE;
+
+        // 2. Magnitudes of the X and Y vector components
+        float absoluteX = Mathf.Abs(vector.x);
+        float absoluteY = Mathf.Abs(vector.y);
+
+        bool isAHorizontalDirection = absoluteX > absoluteY;
+        if (isAHorizontalDirection)
+            return vector.x > 0 ? GravityDirection.EAST : GravityDirection.WEST; // Determine which horizontal dir
+        else
+            return vector.y > 0 ? GravityDirection.NORTH : GravityDirection.SOUTH; // Determine which vertical dir
+    }
+
+    /* Updates gravity selection UI and the temporary gravity variable*/
+    private void setSelectedGravity(GravityDirection direction)
+    {
+        // If a new dir is selected, play appropriate anims
+        if (direction != _selectedGravityDirection)
+            setSelectionAnimation(direction);
+
+        _selectedGravityDirection = direction;
+
+    }
+
+    private void setSelectionAnimation(GravityDirection direction)
+    {
+        switch (direction)
+        {
+            case GravityDirection.NORTH:
+                _gravitySelectorAnimator.SetTrigger("North");
+                return;
+            case GravityDirection.SOUTH:
+                _gravitySelectorAnimator.SetTrigger("South");
+                return;
+            case GravityDirection.EAST:
+                _gravitySelectorAnimator.SetTrigger("East");
+                return;
+            case GravityDirection.WEST:
+                _gravitySelectorAnimator.SetTrigger("West");
+                return;
+            default:
+                _gravitySelectorAnimator.SetTrigger("None");
+                return;
+        }
+    }
+
+    private void pauseTime(bool pause)
+    {
+        if (pause)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
+    }
+
+}

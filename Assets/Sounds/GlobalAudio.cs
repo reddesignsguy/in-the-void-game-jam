@@ -13,8 +13,8 @@ public class GlobalAudio : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !_voidCircles.isPlaying)
         {
-        _oblivion.Stop();
-        _voidCircles.Play();
+            _oblivion.Stop();
+            _voidCircles.Play();
         }
 
     }
