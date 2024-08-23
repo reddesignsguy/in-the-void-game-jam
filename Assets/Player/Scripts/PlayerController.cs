@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             _rb.velocity *= 0;
             transform.position = _spawnPoint;
+            EventsManager.instance.ResetLevels(); 
         }
 
         // Cancel any interactions with objects if the cursor is far away from player
@@ -273,6 +274,12 @@ public class PlayerController : MonoBehaviour
     {
         _rb.velocity *= 0;
         transform.position = _spawnPoint;
+    }
+
+    public bool hasRegisteredCheckpoint(Vector2 pos)
+    {
+            print(pos == _spawnPoint);
+        return pos == _spawnPoint;
     }
 
 }

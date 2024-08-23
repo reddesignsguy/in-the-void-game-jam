@@ -57,16 +57,9 @@ public class Interactable : MonoBehaviour
         EventsManager.instance.onCancelInteract += removeControl;
         EventsManager.instance.onChangeGravity += OnChangeGravity;
         EventsManager.instance.onCancelChangeGravity += OnCancelChangeGravity;
+        EventsManager.instance.onResetLevels += ResetState;
 
         initializeMass();
-    }
-
-    private void Update()
-    {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                ResetState();
-            }
     }
 
     private void FixedUpdate()

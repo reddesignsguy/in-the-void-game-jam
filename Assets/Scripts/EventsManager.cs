@@ -62,4 +62,14 @@ public class EventsManager : MonoBehaviour
             onCancelChangeGravity();
         }
     }
+
+    public event Action onResetLevels;
+
+    public void ResetLevels()
+    {
+        if (onResetLevels != null)
+        {
+            onResetLevels();
+        }
+    }
 }

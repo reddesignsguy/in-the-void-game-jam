@@ -89,6 +89,9 @@ public class GravitySelector : MonoBehaviour
 
         // Time logic
         pauseTime(false);
+
+        // Remove reference
+        _interactableInstanceID = -1;
     }
 
     /* 
