@@ -51,3 +51,12 @@ https://github.com/user-attachments/assets/c3936885-1724-4591-bb5c-d1739f26e440
 - Submitted!
 
 ### Day 8:
+- Added main menu
+- Fade transitions between main menu and game
+- Camera zoom transition when starting game
+- Refactored level resetting
+- EXPLOIT FIX: Levels reset any time the player reaches a new checkpoint to prevent blocks from previous levels being carried to newer levels
+
+
+https://github.com/user-attachments/assets/0be76216-dddb-4979-8057-bb0c2386c078
+
