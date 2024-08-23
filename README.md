@@ -50,3 +50,4 @@ https://github.com/user-attachments/assets/c3936885-1724-4591-bb5c-d1739f26e440
 - More sprites
 - Submitted!
 
+### Day 8:
