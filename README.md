@@ -60,3 +60,18 @@ https://github.com/user-attachments/assets/c3936885-1724-4591-bb5c-d1739f26e440
 
 https://github.com/user-attachments/assets/0be76216-dddb-4979-8057-bb0c2386c078
 
+# Day 9
+- Working on polish
+
+TODO:
+In The Void
+- Character sprite
+- Block sprite
+    - Middle reveals the direction
+- Hovering over block highlights it
+- Dragging a block outside the boundary radius doesn’t make you drop the block; It just stays within the boundary and it’s still technically being held.
+- Make a radius effect (dashed rotating line) revealing the boundaries
+    - If block is at or outside the boundary, the transparency is 100%
+    - If within 1m or further inside of the boundary, the transparency starts at 0%
+    - If in between the above 2 zones, the transparency transitions 
+- Air Boost Dash
