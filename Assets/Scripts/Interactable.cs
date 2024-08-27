@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GravityDirection
 {
@@ -177,10 +178,17 @@ public class Interactable : MonoBehaviour
     private void enableOutline()
     {
         _animator.SetBool("Outlined", true);
+        _renderer.sortingOrder = 1; // Allows the outline of a block to overlap other sprites
     }
 
     private void disableOutline()
     {
         _animator.SetBool("Outlined", false);
+    }
+
+    // Outline of the block doesn't exist so no need to make it overlap w/ other sprites
+    private void OnAnimationEventOutlineEnd()
+    {
+        _renderer.sortingOrder = 0;
     }
 }

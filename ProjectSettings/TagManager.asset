@@ -49,6 +49,9 @@ TagManager:
   - name: Wind
     uniqueID: 1192813515
     locked: 0
+  - name: Blocks
+    uniqueID: 2119907225
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
