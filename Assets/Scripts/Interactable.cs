@@ -73,6 +73,7 @@ public class Interactable : MonoBehaviour
             _rb.MovePosition(targetPos);
         }
 
+        // The force magnitude applied to the player can be ZERO
         Vector2 force = GravityTool._instance.getVectorFromDirection(_gravityDirection) * _forceMagnitude;
         _rb.AddForce(force);
     }

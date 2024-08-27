@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 inputDirection = _move.ReadValue<Vector2>();
 
-        //  Horizontal velocity is manipulated
+        //  Horizontal velocity of player is manipulated
         if (_gravityOn)
         {
             Vector2 newVel = _rb.velocity;
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
 
             _rb.velocity = newVel;
         }
-        // Forces are manipulated
+        // Forces on player are manipulated
         else
         {
             // Handle which sound to play
