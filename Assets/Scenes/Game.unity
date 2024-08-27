@@ -135634,7 +135634,7 @@ PrefabInstance:
       objectReference: {fileID: 1969081912}
     - target: {fileID: 5464064063058657748, guid: 7c8e9260361b145af906ba5f6ce29b8c, type: 3}
       propertyPath: _highlightValue
-      value: 0.08
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 5464064063058657748, guid: 7c8e9260361b145af906ba5f6ce29b8c, type: 3}
       propertyPath: _gravitySelector
@@ -135642,11 +135642,11 @@ PrefabInstance:
       objectReference: {fileID: 784431665}
     - target: {fileID: 7836145516841863668, guid: 7c8e9260361b145af906ba5f6ce29b8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5699997
+      value: -1.639
       objectReference: {fileID: 0}
     - target: {fileID: 7836145516841863668, guid: 7c8e9260361b145af906ba5f6ce29b8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.09
+      value: -1.541
       objectReference: {fileID: 0}
     - target: {fileID: 7836145516841863668, guid: 7c8e9260361b145af906ba5f6ce29b8c, type: 3}
       propertyPath: m_LocalPosition.z

@@ -20,6 +20,7 @@ public class Interactable : MonoBehaviour
     private BoxCollider2D _collider;
     private SpriteRenderer _renderer;
     private Material _material;
+    private Animator _animator;
 
     // Audios
     public AudioSource _gravitySound;
@@ -45,6 +46,7 @@ public class Interactable : MonoBehaviour
         _collider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
         _material = GetComponent<SpriteRenderer>().material;
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -114,13 +116,19 @@ public class Interactable : MonoBehaviour
     private void OnMouseEnter()
     {
         if (_player.mouseWithinRadius())
+        {
             enableHighlight();
+            enableOutline();
+        }
     }
 
     private void OnMouseExit()
     {
         if (!_beingControlled)
+        {
             disableHighlight();
+            disableOutline();
+        }
     }
 
     public void giveControl(Vector2 mousePos)
@@ -130,13 +138,14 @@ public class Interactable : MonoBehaviour
         {
             _rb.velocity *= 0;
             _beingControlled = true;
+            enableOutline();
         }
     }
 
     public void removeControl()
     {
-            disableHighlight();
-           _beingControlled = false;
+        disableHighlight();
+        _beingControlled = false;
     }
 
     // Mass is based on scale
@@ -154,6 +163,23 @@ public class Interactable : MonoBehaviour
         _gravityDirection = GravityDirection.NONE;
     }
 
-    private void enableHighlight() { _material.SetFloat("_Whiteness", _highlightValue); }
-    private void disableHighlight() { _material.SetFloat("_Whiteness", 0); }
+    private void enableHighlight()
+    {
+        _material.SetFloat("_Whiteness", _highlightValue);
+    }
+
+    private void disableHighlight()
+    {
+        _material.SetFloat("_Whiteness", 0);
+    }
+
+    private void enableOutline()
+    {
+        _animator.SetBool("Outlined", true);
+    }
+
+    private void disableOutline()
+    {
+        _animator.SetBool("Outlined", false);
+    }
 }
