@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D _collider;
     private SpriteRenderer _sprite;
     private ParticleSystem _airBoostParticles;
+    private Animator _animator;
 
     // Audio
     private bool _playedAirBurstIntro = false;
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         _airBoostParticles = GetComponentInChildren<ParticleSystem>();
         _airBoostParticles.Stop();
     }
@@ -128,7 +130,6 @@ public class PlayerController : MonoBehaviour
     }
 
     /* Handles player movement and air burst sound FX
-     * 
      */
     private void FixedUpdate()
     {
@@ -137,23 +138,24 @@ public class PlayerController : MonoBehaviour
         //  Horizontal velocity of player is manipulated
         if (_gravityOn)
         {
-            Vector2 newVel = _rb.velocity;
-            newVel.x = inputDirection.x * _runSpeed;
-
-            _rb.velocity = newVel;
+            Debug.Log("Unimplemented");
         }
         // Forces on player are manipulated
         else
         {
-            // Handle which sound to play
-            PlayAirburst(inputDirection);
+            PlayAirburstLoop(inputDirection);
+            PlayTiltAnimation(inputDirection);
 
+            // Apply force to player
             Vector2 force = inputDirection * _airBoostForce * Time.deltaTime;
             _rb.AddForce(force);
         }
     }
 
-    private void PlayAirburst(Vector2 inputDirection)
+    /* Plays the airboost loop under certain edge cases
+     * @params inputDirection  Vector2  The velocity direction of the player 
+     */
+    private void PlayAirburstLoop(Vector2 inputDirection)
     {
         bool isMoving = inputDirection.magnitude != 0;
         if (isMoving && !_airBurstStart.isPlaying && !_airBurstLoop.isPlaying)
@@ -163,6 +165,25 @@ public class PlayerController : MonoBehaviour
         else if (!isMoving)
         {
             _airBurstLoop.Stop();
+        }
+    }
+
+    /* Tilts the player based on inputDirection
+     * @params inputDirection  Vector2  The direction that determines tilt
+     */
+    private void PlayTiltAnimation(Vector2 inputDirection)
+    {
+        switch (inputDirection.x)
+        {
+            case < 0:
+                _animator.SetInteger("Tilt", -1);
+                break;
+            case > 0:
+                _animator.SetInteger("Tilt", 1);
+                break;
+            default:
+                _animator.SetInteger("Tilt", 0);
+                break;
         }
     }
 
