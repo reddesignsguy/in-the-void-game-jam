@@ -146,18 +146,23 @@ public class PlayerController : MonoBehaviour
         else
         {
             // Handle which sound to play
-            bool isMoving = inputDirection.magnitude != 0;
-            if (isMoving && !_airBurstStart.isPlaying && !_airBurstLoop.isPlaying)
-            {
-                 _airBurstLoop.Play();
-            }
-            else if (!isMoving)
-            {
-                _airBurstLoop.Stop();
-            }
+            PlayAirburst(inputDirection);
 
             Vector2 force = inputDirection * _airBoostForce * Time.deltaTime;
             _rb.AddForce(force);
+        }
+    }
+
+    private void PlayAirburst(Vector2 inputDirection)
+    {
+        bool isMoving = inputDirection.magnitude != 0;
+        if (isMoving && !_airBurstStart.isPlaying && !_airBurstLoop.isPlaying)
+        {
+            _airBurstLoop.Play();
+        }
+        else if (!isMoving)
+        {
+            _airBurstLoop.Stop();
         }
     }
 
