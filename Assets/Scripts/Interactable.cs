@@ -15,28 +15,23 @@ public class Interactable : MonoBehaviour
 {
     // Components
     [SerializeField]
-    private PlayerController player;
+    private PlayerController _player;
     private Rigidbody2D _rb;
     private BoxCollider2D _collider;
     private SpriteRenderer _renderer;
+    private Material _material;
 
     // Audios
     public AudioSource _gravitySound;
     public AudioSource _pickupSound;
-
-    // UI for selecting gravity
-    //public GameObject _gravitySelector;
-    //private Animator _selectorAnimator;
-
-    // Gets run when gravity is being manipulated
-    //private Coroutine SelectGravityCoroutine;
-    //private GravityDirection _tempGravityDirection;  // only used in SelectGravityCoroutine
 
     private bool _beingControlled;
 
     [SerializeField]
     private GravityDirection _gravityDirection;
     private Vector2 _spawnPosition;
+    [SerializeField, Range(0, 1)]
+    private float _highlightValue;
 
     // TODO -- Refactor force and put it in some global SO
     public float _forceMagnitude = 10;
@@ -49,6 +44,7 @@ public class Interactable : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
+        _material = GetComponent<SpriteRenderer>().material;
     }
 
     private void Start()
@@ -115,17 +111,31 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private void OnMouseEnter()
+    {
+        if (_player.mouseWithinRadius())
+            enableHighlight();
+    }
+
+    private void OnMouseExit()
+    {
+        if (!_beingControlled)
+            disableHighlight();
+    }
+
     public void giveControl(Vector2 mousePos)
     {
-        _rb.velocity *= 0;
-
         // Mouse is over this object
         if (_collider.OverlapPoint(mousePos))
+        {
+            _rb.velocity *= 0;
             _beingControlled = true;
+        }
     }
 
     public void removeControl()
     {
+            disableHighlight();
            _beingControlled = false;
     }
 
@@ -143,4 +153,7 @@ public class Interactable : MonoBehaviour
         transform.position = _spawnPosition;
         _gravityDirection = GravityDirection.NONE;
     }
+
+    private void enableHighlight() { _material.SetFloat("_Whiteness", _highlightValue); }
+    private void disableHighlight() { _material.SetFloat("_Whiteness", 0); }
 }

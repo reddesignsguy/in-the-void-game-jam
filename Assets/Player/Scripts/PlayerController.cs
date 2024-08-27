@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnStopChangeGravity(InputAction.CallbackContext context) => EventsManager.instance.CancelChangeGravity();
 
-    private bool mouseWithinRadius()
+    public bool mouseWithinRadius()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
