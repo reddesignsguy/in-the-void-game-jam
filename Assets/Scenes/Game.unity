@@ -139651,9 +139651,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpForce: 1500
   _airBoostForce: 2000
+  _airBoostDashForce: 1000
   _runSpeed: 5
   _interactionRadius: 5
   _gravityOn: 0
+  _dashCooldown: 0.75
   _airBurstLoop: {fileID: 1969081913}
   _airBurstStart: {fileID: 1969081915}
   _airBurstEnd: {fileID: 1969081914}

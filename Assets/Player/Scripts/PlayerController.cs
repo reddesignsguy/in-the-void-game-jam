@@ -13,11 +13,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _airBoostForce = 2000;
     [SerializeField]
+    private float _airBoostDashForce = 1000;
+    [SerializeField]
     private float _runSpeed = 5;
     [SerializeField]
-    private float _interactionRadius = 2.8f;
+    public float _interactionRadius { get; private set; } = 2.8f;
     [SerializeField]
     private bool _gravityOn = false;
+    [SerializeField]
+    private float _dashCooldown = 1f; // Cooldown in seconds
 
     // Components
     private DefaultPlayerActions _playerActions;
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _changeGravity;
 
     private Vector2 _spawnPoint;
+    private bool _canDash = true;
 
 
     void Awake()
@@ -121,12 +126,6 @@ public class PlayerController : MonoBehaviour
             transform.position = _spawnPoint;
             EventsManager.instance.ResetLevels(); 
         }
-
-        // Cancel any interactions with objects if the cursor is far away from player
-        if (_interact.IsPressed() && !mouseWithinRadius())
-        {
-            EventsManager.instance.CancelInteract();
-        }
     }
 
     /* Handles player movement and air burst sound FX
@@ -190,7 +189,19 @@ public class PlayerController : MonoBehaviour
     private void OnJump(InputAction.CallbackContext obj)
     {
         if (_gravityOn && IsGrounded())
+        {
             _rb.AddForce(new Vector2(0, _jumpForce));
+        }
+        else if (!_gravityOn && _canDash) 
+        {
+            // Apply dash force
+            Vector2 inputDirection = _move.ReadValue<Vector2>();
+            Vector2 force = inputDirection * _airBoostDashForce;
+            _rb.AddForce(force);
+
+            StartCoroutine(DashCooldownCoroutine());
+        }
+
     }
 
     private void OnLooking(InputAction.CallbackContext obj)
@@ -246,13 +257,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnStopChangeGravity(InputAction.CallbackContext context) => EventsManager.instance.CancelChangeGravity();
 
+    private IEnumerator DashCooldownCoroutine()
+    {
+        _canDash = false;
+        yield return new WaitForSeconds(_dashCooldown);
+        _canDash = true;
+    }
+
     public bool mouseWithinRadius()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
 
         float distToPlayer = (mousePos - transform.position).magnitude;
-
+        
         return distToPlayer < _interactionRadius;
     }
 

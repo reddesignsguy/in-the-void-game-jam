@@ -63,20 +63,30 @@ public class Interactable : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_beingControlled)
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
-
-            // Smoothly interpolate the Rigidbody's position towards the target
-            Vector2 targetPos = Vector2.SmoothDamp(_rb.position, mousePos, ref velocity, 0.12f);
-
-            _rb.MovePosition(targetPos);
-        }
-
-        // The force magnitude applied to the player can be ZERO
+        // The force magnitude applied to the interactable can be ZERO
         Vector2 force = GravityTool._instance.getVectorFromDirection(_gravityDirection) * _forceMagnitude;
         _rb.AddForce(force);
+
+        if (!_beingControlled) return;
+
+        Vector2 targetPos;
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        if (_player.mouseWithinRadius())
+        {
+            // Smoothly interpolate the Rigidbody's position towards the target
+            targetPos = Vector2.SmoothDamp(_rb.position, mousePos, ref velocity, 0.12f);
+        } else
+        {
+            Vector2 playerToMouseUnit = (mousePos - _player.transform.position).normalized;
+
+            // Target position is just on the border of the interaction radius
+            Vector2 tempTargetPos = (Vector2) _player.transform.position + (playerToMouseUnit * _player._interactionRadius);
+            targetPos = Vector2.SmoothDamp(_rb.position, tempTargetPos, ref velocity, 0.12f);
+        }
+
+        _rb.MovePosition(targetPos);
     }
 
     public void OnChangeGravity(Vector2 mousePos)
@@ -120,7 +130,6 @@ public class Interactable : MonoBehaviour
         if (_player.mouseWithinRadius())
         {
             enableHighlight();
-            enableOutline();
         }
     }
 
@@ -129,7 +138,6 @@ public class Interactable : MonoBehaviour
         if (!_beingControlled)
         {
             disableHighlight();
-            disableOutline();
         }
     }
 
@@ -146,7 +154,7 @@ public class Interactable : MonoBehaviour
 
     public void removeControl()
     {
-        disableHighlight();
+        disableOutline();
         _beingControlled = false;
     }
 
