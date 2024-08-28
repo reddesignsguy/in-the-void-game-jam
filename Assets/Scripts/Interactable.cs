@@ -127,18 +127,16 @@ public class Interactable : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (_player.mouseWithinRadius())
-        {
-            enableHighlight();
-        }
+        if (!_player.mouseWithinRadius()) return;
+
+        enableHighlight();
     }
 
     private void OnMouseExit()
     {
-        if (!_beingControlled)
-        {
-            disableHighlight();
-        }
+        if (_beingControlled) return;
+
+        disableHighlight();
     }
 
     public void giveControl(Vector2 mousePos)
