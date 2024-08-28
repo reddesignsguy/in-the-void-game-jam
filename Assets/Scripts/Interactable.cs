@@ -40,6 +40,7 @@ public class Interactable : MonoBehaviour
     public float _forceMagnitude = 10;
     // TODO  -- refactor
     private Vector2 velocity = Vector2.zero;
+    Vector2 _mouseOffset = new Vector2(0,0); // The offset between the center of this obj and the mouse when the player interacts with it
 
     private void Awake()
     {
@@ -53,17 +54,14 @@ public class Interactable : MonoBehaviour
 
     private void Start()
     {
-        EventsManager.instance.onInteract += giveControl;
-        EventsManager.instance.onCancelInteract += removeControl;
+        EventsManager.instance.onInteract += HandleInteractEvent;
+        EventsManager.instance.onCancelInteract += HandleCancelInteractEvent;
         EventsManager.instance.onChangeGravity += OnChangeGravity;
         EventsManager.instance.onCancelChangeGravity += OnCancelChangeGravity;
-        EventsManager.instance.onResetLevels += ResetState;
+        EventsManager.instance.onResetLevels += HandleResetLevelsEvent;
 
         initializeMass();
     }
-
-    // TODO - remove
-    Vector2 offset;
 
     private void FixedUpdate()
     {
@@ -75,17 +73,12 @@ public class Interactable : MonoBehaviour
 
         Vector2 targetPos;
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-
-        // TODO - remove
-        if (offset == null)
-            offset = _rb.position;
+        Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
 
         if (_player.mouseWithinRadius())
         {
             // Smoothly interpolate the Rigidbody's position towards the target
-            Vector2 tempTargetPos = (Vector2) mousePos + offset;
+            Vector2 tempTargetPos = (Vector2) mousePos + _mouseOffset;
 
             targetPos = Vector2.SmoothDamp(_rb.position, tempTargetPos, ref velocity, 0.12f);
         } else
@@ -96,13 +89,11 @@ public class Interactable : MonoBehaviour
             Vector2 unit = playerToMouseUnit * _player._interactionRadius;
             Vector2 origin = _player.transform.position;
             Vector2 tempTargetPos = origin + unit;
-            tempTargetPos += offset;
+
+            tempTargetPos += _mouseOffset;
 
             targetPos = Vector2.SmoothDamp(_rb.position, tempTargetPos, ref velocity, 0.12f);
         }
-
-        // TODO - remove
-        //lastMousePos = mousePos;
 
         _rb.MovePosition(targetPos);
     }
@@ -129,7 +120,8 @@ public class Interactable : MonoBehaviour
     {
         int objId = GravitySelector._instance._interactableInstanceID;
 
-        if (objId == gameObject.GetInstanceID())
+        int thisId = gameObject.GetInstanceID();
+        if (objId == thisId)
         {
             GravitySelector._instance.EndSelection();
 
@@ -160,23 +152,42 @@ public class Interactable : MonoBehaviour
         disableHighlight();
     }
 
-    public void giveControl(Vector2 mousePos)
+    public void HandleInteractEvent(Vector2 mousePos)
     {
         // Mouse is over this object
         if (_collider.OverlapPoint(mousePos))
         {
-            _rb.velocity *= 0;
-            _beingControlled = true;
-            enableOutline();
-
-            offset = _rb.position - mousePos;
+            GiveControl(mousePos);
         }
     }
 
-    public void removeControl()
+    private void GiveControl(Vector2 mousePos)
+    {
+        _rb.velocity *= 0;
+        _beingControlled = true;
+
+        enableOutline();
+
+        // Save offset during controlled state
+        _mouseOffset = _rb.position - mousePos;
+    }
+
+    public void HandleCancelInteractEvent()
+    {
+        RemoveControl();
+    }
+
+    private void RemoveControl()
     {
         disableOutline();
         _beingControlled = false;
+    }
+
+    public void HandleResetLevelsEvent()
+    {
+        _rb.velocity *= 0;
+        transform.position = _spawnPosition;
+        _gravityDirection = GravityDirection.NONE;
     }
 
     // Mass is based on scale
@@ -186,13 +197,6 @@ public class Interactable : MonoBehaviour
         _rb.mass = scale.x * scale.y * 2;
     }
 
-
-    public void ResetState()
-    {
-        _rb.velocity *= 0;
-        transform.position = _spawnPosition;
-        _gravityDirection = GravityDirection.NONE;
-    }
 
     private void enableHighlight()
     {

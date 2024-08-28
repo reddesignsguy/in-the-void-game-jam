@@ -220,17 +220,16 @@ public class PlayerController : MonoBehaviour
      */
     private void OnInteract(InputAction.CallbackContext obj)
     {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
+        Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
 
-            float distToPlayer = (mousePos - transform.position).magnitude;
+        float distToPlayer = (mousePos - transform.position).magnitude;
 
-            bool mousePosIsWithinPlayerRadius = distToPlayer < _interactionRadius;
+        bool mousePosIsWithinPlayerRadius = distToPlayer < _interactionRadius;
 
-            if (mousePosIsWithinPlayerRadius)
-            {
-                EventsManager.instance.Interact(mousePos);
-            }
+        if (mousePosIsWithinPlayerRadius)
+        {
+            EventsManager.instance.Interact(mousePos);
+        }
         
     }
 
@@ -242,8 +241,7 @@ public class PlayerController : MonoBehaviour
     */
     private void OnChangeGravity(InputAction.CallbackContext context)
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
+        Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
 
         float distToPlayer = (mousePos - transform.position).magnitude;
 
@@ -266,8 +264,7 @@ public class PlayerController : MonoBehaviour
 
     public bool mouseWithinRadius()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
+        Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
 
         float distToPlayer = (mousePos - transform.position).magnitude;
         
@@ -322,7 +319,6 @@ public class PlayerController : MonoBehaviour
 
     public bool hasRegisteredCheckpoint(Vector2 pos)
     {
-            print(pos == _spawnPoint);
         return pos == _spawnPoint;
     }
 

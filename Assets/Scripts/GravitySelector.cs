@@ -62,8 +62,7 @@ public class GravitySelector : MonoBehaviour
     {
         while (true)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
+            Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
 
             // Check which cardinal direction the player wants to select
             Vector2 directionVector = (Vector2)mousePos - centerOfSelector;
