@@ -118,10 +118,10 @@ public class Interactable : MonoBehaviour
 
     public void OnCancelChangeGravity()
     {
-        int objId = GravitySelector._instance._interactableInstanceID;
-
+        int idOfObjWithGravityChange = GravitySelector._instance._interactableInstanceID;
         int thisId = gameObject.GetInstanceID();
-        if (objId == thisId)
+
+        if (idOfObjWithGravityChange == thisId)
         {
             GravitySelector._instance.EndSelection();
 
