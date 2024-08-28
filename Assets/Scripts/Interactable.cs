@@ -127,6 +127,8 @@ public class Interactable : MonoBehaviour
 
             _gravityDirection = GravitySelector._instance._selectedGravityDirection;
 
+            RefreshSpriteAnimation();
+
             // Finetuning: Reset velocity for predictable behavior
             _rb.velocity *= 0;
 
@@ -188,6 +190,29 @@ public class Interactable : MonoBehaviour
         _rb.velocity *= 0;
         transform.position = _spawnPosition;
         _gravityDirection = GravityDirection.NONE;
+    }
+
+    /* Shows the appropriate arrow based on this object's gravity direction*/
+    private void RefreshSpriteAnimation()
+    {
+        switch(_gravityDirection)
+        {
+            case GravityDirection.NORTH:
+                _animator.SetTrigger("North");
+                break;
+            case GravityDirection.EAST:
+                _animator.SetTrigger("East");
+                break;
+            case GravityDirection.SOUTH:
+                _animator.SetTrigger("South");
+                break;
+            case GravityDirection.WEST:
+                _animator.SetTrigger("West");
+                break;
+            case GravityDirection.NONE:
+                _animator.SetTrigger("Zero");
+                break;
+        }
     }
 
     // Mass is based on scale
