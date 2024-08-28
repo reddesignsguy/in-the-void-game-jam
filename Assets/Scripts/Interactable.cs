@@ -2,6 +2,7 @@ using System.Collections;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.Image;
 
 public enum GravityDirection
 {
@@ -61,6 +62,9 @@ public class Interactable : MonoBehaviour
         initializeMass();
     }
 
+    // TODO - remove
+    Vector2 offset;
+
     private void FixedUpdate()
     {
         // The force magnitude applied to the interactable can be ZERO
@@ -73,18 +77,32 @@ public class Interactable : MonoBehaviour
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
+
+        // TODO - remove
+        if (offset == null)
+            offset = _rb.position;
+
         if (_player.mouseWithinRadius())
         {
             // Smoothly interpolate the Rigidbody's position towards the target
-            targetPos = Vector2.SmoothDamp(_rb.position, mousePos, ref velocity, 0.12f);
+            Vector2 tempTargetPos = (Vector2) mousePos + offset;
+
+            targetPos = Vector2.SmoothDamp(_rb.position, tempTargetPos, ref velocity, 0.12f);
         } else
         {
             Vector2 playerToMouseUnit = (mousePos - _player.transform.position).normalized;
 
             // Target position is just on the border of the interaction radius
-            Vector2 tempTargetPos = (Vector2) _player.transform.position + (playerToMouseUnit * _player._interactionRadius);
+            Vector2 unit = playerToMouseUnit * _player._interactionRadius;
+            Vector2 origin = _player.transform.position;
+            Vector2 tempTargetPos = origin + unit;
+            tempTargetPos += offset;
+
             targetPos = Vector2.SmoothDamp(_rb.position, tempTargetPos, ref velocity, 0.12f);
         }
+
+        // TODO - remove
+        //lastMousePos = mousePos;
 
         _rb.MovePosition(targetPos);
     }
@@ -125,9 +143,12 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
-        if (!_player.mouseWithinRadius()) return;
+        if (!_player.mouseWithinRadius() && !_beingControlled) {
+            disableHighlight();
+            return;
+        }
 
         enableHighlight();
     }
@@ -147,6 +168,8 @@ public class Interactable : MonoBehaviour
             _rb.velocity *= 0;
             _beingControlled = true;
             enableOutline();
+
+            offset = _rb.position - mousePos;
         }
     }
 
