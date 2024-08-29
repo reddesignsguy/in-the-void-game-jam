@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GravitySelector : MonoBehaviour
@@ -50,9 +51,11 @@ public class GravitySelector : MonoBehaviour
         // Handle gravity selection separately
         SelectGravityCoroutine = StartCoroutine(SelectGravity(objectPos));
 
+
         // Pause physics system
         pauseTime(true);
     }
+
 
     /*
      * For every frame, this function evaluates the gravity direction that the player is selecting 
