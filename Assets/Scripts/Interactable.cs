@@ -190,6 +190,7 @@ public class Interactable : MonoBehaviour
         _rb.velocity *= 0;
         transform.position = _spawnPosition;
         _gravityDirection = GravityDirection.NONE;
+        RefreshSpriteAnimation();
     }
 
     /* Shows the appropriate arrow based on this object's gravity direction*/
