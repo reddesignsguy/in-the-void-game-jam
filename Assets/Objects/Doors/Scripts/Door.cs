@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     protected enum DoorState { OPEN, OPENING, CLOSED, CLOSING}
 
     private Animator _animator;
+    private BoxCollider2D _collider;
 
     public AudioSource _gateOpenSound;
     public AudioSource _gateCloseSound;
@@ -17,6 +18,7 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _collider = GetComponent<BoxCollider2D>();
 
         _doorState = DoorState.CLOSED;
     }
@@ -30,6 +32,17 @@ public class Door : MonoBehaviour
     public void CloseDoor()
     {
         _gateCloseSound.Play();
-            _animator.SetBool("openDoor", false);
+        _animator.SetBool("openDoor", false);
+    }
+
+    public void enableCollider()
+    {
+        _collider.enabled = true;
+    }
+
+
+    public void disableCollider()
+    {
+        _collider.enabled = false;
     }
 }
