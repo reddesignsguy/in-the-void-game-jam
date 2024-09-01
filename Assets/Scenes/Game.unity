@@ -74583,7 +74583,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.41
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.54
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: cbe31847000000000790f01bb7b752954f8e3ea299375b7e
@@ -74604,7 +74604,7 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1.09
+  m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 1.7605894
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -83527,7 +83527,7 @@ PrefabInstance:
       objectReference: {fileID: 1969081912}
     - target: {fileID: 3816649305870703435, guid: e66e6cf5d6a5049d9b80cd311523591b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.789627
+      value: 51.35
       objectReference: {fileID: 0}
     - target: {fileID: 3816649305870703435, guid: e66e6cf5d6a5049d9b80cd311523591b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -138620,7 +138620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -139581,18 +139581,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0065431595, y: -0.0024751425}
+  m_Offset: {x: -0.014297307, y: -0.0024751425}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.37}
+    oldSize: {x: 2.1538463, y: 2.8461537}
     newSize: {x: 0.8125, y: 1.15625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3043509, y: 1.745851}
+  m_Size: {x: 1.2626699, y: 1.745851}
   m_EdgeRadius: 0
 --- !u!50 &1969081911
 Rigidbody2D:
