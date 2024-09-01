@@ -51,6 +51,8 @@ public class GravitySelector : MonoBehaviour
         // Handle gravity selection separately
         SelectGravityCoroutine = StartCoroutine(SelectGravity(objectPos));
 
+        // SFX
+        MixLevels._instance.DrownSounds();
 
         // Pause physics system
         pauseTime(true);
@@ -94,6 +96,9 @@ public class GravitySelector : MonoBehaviour
 
         // Remove reference
         _interactableInstanceID = -1;
+
+        // SFX
+        MixLevels._instance.Reset();
     }
 
     /* 
