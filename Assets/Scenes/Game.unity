@@ -135134,7 +135134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GravitySelectorUI: {fileID: 784431665}
   _soundManager: {fileID: 1218823338}
-  _postProcessingVolume: {fileID: 0}
+  _postProcessingManager: {fileID: 1601206018}
 --- !u!4 &1203176326
 Transform:
   m_ObjectHideFlags: 0
@@ -135166,7 +135166,7 @@ GameObject:
   - component: {fileID: 1218823337}
   - component: {fileID: 1218823338}
   m_Layer: 0
-  m_Name: GravitySelectionSoundManager
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136673,6 +136673,7 @@ Transform:
   - {fileID: 1203176326}
   - {fileID: 784431666}
   - {fileID: 1218823337}
+  - {fileID: 1601206017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1521514599
@@ -137500,6 +137501,53 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &1601206016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601206017}
+  - component: {fileID: 1601206018}
+  m_Layer: 0
+  m_Name: PostProcessingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1601206017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601206016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1501637866}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1601206018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601206016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b199a302a6a4959a3bc7d58a095e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _postProcessingVolume: {fileID: 584031384}
+  _desaturationValue: -45
+  _fadeDuration: 0.15
 --- !u!1 &1610085683
 GameObject:
   m_ObjectHideFlags: 0

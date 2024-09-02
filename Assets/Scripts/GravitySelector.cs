@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class GravitySelector : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class GravitySelector : MonoBehaviour
     // Gravity selector UI and components
     [SerializeField] private GameObject GravitySelectorUI;
     [SerializeField] private GravitySelectionSoundManager _soundManager;
-    [SerializeField] private Volume _postProcessingVolume;
+    [SerializeField] private GravitySelectionPostProcessingManager _postProcessingManager;
     private Animator _gravitySelectorAnimator;
 
     // Fields
@@ -53,6 +52,8 @@ public class GravitySelector : MonoBehaviour
 
         // SFX
         _soundManager.DrownSounds();
+
+        _postProcessingManager.Desaturate();
 
         // Pause physics system
         pauseTime(true);
@@ -99,6 +100,8 @@ public class GravitySelector : MonoBehaviour
 
         // SFX
         _soundManager.Reset();
+
+        _postProcessingManager.ResetSaturation();
     }
 
     /* 
