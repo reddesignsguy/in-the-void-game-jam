@@ -72949,18 +72949,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 278234633}
     m_Modifications:
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.b
-      value: 0.47418803
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4669811
-      objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
       value: Gateway (2)
@@ -76415,6 +76403,66 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1572071568}
     m_Modifications:
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 4.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.31184247
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.49132815
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 17733
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime0
+      value: 18504
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 36430
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.43867922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.7822872
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889316296083028815, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
       value: Gateway (5)
@@ -76742,6 +76790,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215669953}
     m_Modifications:
+    - target: {fileID: 4468007307140265842, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931235768698434779, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
       value: Gateway (3)
@@ -82997,7 +83053,7 @@ Transform:
   m_GameObject: {fileID: 805943555}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.87, y: 4.04, z: 13634.5625}
+  m_LocalPosition: {x: 6.56, y: 6.41, z: 13634.5625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133421,17 +133477,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1431508755}
     m_Modifications:
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.b
-      value: 0.47418803
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4669811
+    - target: {fileID: 6280763537343519598, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.0013957
       objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
@@ -133443,7 +133491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8820860033591781779, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5400004
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 8820860033591781779, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -133936,13 +133984,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083057901}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.9883317, w: -0.15231733}
-  m_LocalPosition: {x: 63.560005, y: -0.14999998, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.97488046, w: -0.22272876}
+  m_LocalPosition: {x: 62.74, y: 1.86, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 283435153}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -197.522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -205.739}
 --- !u!114 &1083057903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133960,7 +134008,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.454
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.73
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: cbe31847000000000790f01bb7b752954f8e3ea299375b7e
@@ -134001,17 +134049,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1431508755}
     m_Modifications:
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.b
-      value: 0.47418803
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4669811
+    - target: {fileID: 6280763537343519598, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.344
       objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
@@ -135877,18 +135917,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 278234633}
     m_Modifications:
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.b
-      value: 0.47418803
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4669811
-      objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
       value: Gateway (1)
@@ -137349,17 +137377,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1431508755}
     m_Modifications:
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.b
-      value: 0.47418803
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434454633231841708, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4669811
+    - target: {fileID: 6280763537343519598, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.344
       objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
@@ -140307,6 +140327,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 244995693}
     m_Modifications:
+    - target: {fileID: 4468007307140265842, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931235768698434779, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280763537343519598, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2613533
+      objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
       value: Gateway (2)
@@ -140778,6 +140810,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 244995693}
     m_Modifications:
+    - target: {fileID: 4468007307140265842, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931235768698434779, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280763537343519598, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2268
+      objectReference: {fileID: 0}
     - target: {fileID: 7266431965633789778, guid: b4b4ce3ea41b44beb8296b93dddbd54f, type: 3}
       propertyPath: m_Name
       value: Gateway
