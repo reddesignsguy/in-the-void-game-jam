@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MixLevels : MonoBehaviour
+public class GravitySelectionSoundManager : MonoBehaviour
 {
-    // SINGLETON
-    public static MixLevels _instance;
-
     // References
     public AudioMixer _mixer;
 
@@ -25,21 +22,13 @@ public class MixLevels : MonoBehaviour
     public float _defaultHighs = 1f;        // Default to 1
 
     // Lerp settings for sound transitions
-    public float _fadeDuration = 3f;  // Duration in seconds
+    public float _fadeDuration = 0.35f;  // Duration in seconds
 
     private List<Coroutine> _runningSoundInterpolations;
 
     private void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-            _runningSoundInterpolations = new List<Coroutine>();
-            DontDestroyOnLoad(gameObject);
-        } else
-        {
-            Destroy(gameObject);
-        }
+        _runningSoundInterpolations = new List<Coroutine>();
     }
 
     public void DrownSounds()
@@ -83,7 +72,6 @@ public class MixLevels : MonoBehaviour
 
         while (timeElapsed < _fadeDuration)
         {
-            print(timeElapsed);
             timeElapsed += Time.unscaledDeltaTime;
             float t = timeElapsed / _fadeDuration;
             float lerpedValue = Mathf.Lerp(start, end, t);
@@ -91,5 +79,5 @@ public class MixLevels : MonoBehaviour
 
             yield return null;
         }
-}
+    }
 }

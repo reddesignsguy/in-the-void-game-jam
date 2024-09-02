@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GravitySelector : MonoBehaviour
 {
@@ -9,15 +8,16 @@ public class GravitySelector : MonoBehaviour
     public static GravitySelector _instance { get; private set; }
 
     // Gravity selector UI and components
-    [SerializeField]
-    private GameObject GravitySelectorUI;
+    [SerializeField] private GameObject GravitySelectorUI;
+    [SerializeField] private GravitySelectionSoundManager _soundManager;
+    [SerializeField] private Volume _postProcessingVolume;
     private Animator _gravitySelectorAnimator;
 
-    // Gets run when gravity is being manipulated
-    private Coroutine SelectGravityCoroutine;
-
+    // Fields
     public GravityDirection _selectedGravityDirection { get; private set; }
     public int _interactableInstanceID { get; private set; } // The ID of the interactable object whose gravity is being selected for
+
+    private Coroutine SelectGravityCoroutine; // Gets run when gravity is being manipulated
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class GravitySelector : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        
         GravitySelectorUI.SetActive(false);
         _gravitySelectorAnimator = GravitySelectorUI.GetComponent<Animator>();
     }
@@ -52,7 +52,7 @@ public class GravitySelector : MonoBehaviour
         SelectGravityCoroutine = StartCoroutine(SelectGravity(objectPos));
 
         // SFX
-        MixLevels._instance.DrownSounds();
+        _soundManager.DrownSounds();
 
         // Pause physics system
         pauseTime(true);
@@ -98,7 +98,7 @@ public class GravitySelector : MonoBehaviour
         _interactableInstanceID = -1;
 
         // SFX
-        MixLevels._instance.Reset();
+        _soundManager.Reset();
     }
 
     /* 
