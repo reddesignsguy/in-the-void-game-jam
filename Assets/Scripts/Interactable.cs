@@ -109,7 +109,7 @@ public class Interactable : MonoBehaviour
         float halfOfObjHeight = _renderer.size.y / 2;
 
         // Initiate gravity selection
-        GravitySelector._instance.StartSelection(gameObject.GetInstanceID(), thisObjPos, halfOfObjHeight);
+        GravitySelector._instance.StartSelection(gameObject.GetInstanceID(), thisObjPos, halfOfObjHeight, _collider.bounds);
 
         // SFX
         _pickupSound.Play();

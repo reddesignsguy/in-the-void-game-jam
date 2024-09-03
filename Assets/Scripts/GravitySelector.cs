@@ -10,6 +10,7 @@ public class GravitySelector : MonoBehaviour
     [SerializeField] private GameObject GravitySelectorUI;
     [SerializeField] private GravitySelectionSoundManager _soundManager;
     [SerializeField] private GravitySelectionPostProcessingManager _postProcessingManager;
+    [SerializeField] private GameObject _selectionSprite;
     private Animator _gravitySelectorAnimator;
 
     // Fields
@@ -28,14 +29,15 @@ public class GravitySelector : MonoBehaviour
             Destroy(gameObject);
         }
         
-        GravitySelectorUI.SetActive(false);
         _gravitySelectorAnimator = GravitySelectorUI.GetComponent<Animator>();
+
+        GravitySelectorUI.SetActive(false);
     }
 
     /* Initiates the process of selecting a gravity direction
      * EDGE: halfOfObjHeight is used to handle a small edge case relating to the coordinates of the obj
      */
-    public void StartSelection(int objID, Vector2 objectPos, float halfOfObjHeight)
+    public void StartSelection(int objID, Vector2 objectPos, float halfOfObjHeight, Bounds objectBounds)
     {
         _interactableInstanceID = objID;
 
@@ -48,7 +50,7 @@ public class GravitySelector : MonoBehaviour
         objectPos.y -= halfOfObjHeight;
 
         // Handle gravity selection separately
-        SelectGravityCoroutine = StartCoroutine(SelectGravity(objectPos));
+        SelectGravityCoroutine = StartCoroutine(SelectGravity(objectPos, objectBounds));
 
         // SFX
         _soundManager.DrownSounds();
@@ -64,8 +66,9 @@ public class GravitySelector : MonoBehaviour
      * For every frame, this function evaluates the gravity direction that the player is selecting 
      * and updates this object's state accordingly
      */
-    private IEnumerator SelectGravity(Vector2 centerOfSelector)
+    private IEnumerator SelectGravity(Vector2 centerOfSelector, Bounds objectBounds)
     {
+
         while (true)
         {
             Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
@@ -73,8 +76,11 @@ public class GravitySelector : MonoBehaviour
             // Check which cardinal direction the player wants to select
             Vector2 directionVector = (Vector2)mousePos - centerOfSelector;
             GravityDirection direction = vectorToSelectedDirection(directionVector);
-            setSelectedGravity(direction);
+            setSelectedGravity(direction, objectBounds);
 
+            // Pass unscaled time variable to shader
+            SpriteRenderer renderer = _selectionSprite.GetComponent<SpriteRenderer>();
+            renderer.material.SetFloat("_UnscaledTime", Time.unscaledTime);
 
             yield return new WaitForEndOfFrame();
         }
@@ -129,14 +135,37 @@ public class GravitySelector : MonoBehaviour
     }
 
     /* Updates gravity selection UI and the temporary gravity variable*/
-    private void setSelectedGravity(GravityDirection direction)
+    private void setSelectedGravity(GravityDirection direction, Bounds bounds)
     {
         // If a new dir is selected, play appropriate anims
         if (direction != _selectedGravityDirection)
+        {
+            SetSelectionAnimation(direction, bounds);
             setSelectionAnimation(direction);
+        }
+            
 
         _selectedGravityDirection = direction;
 
+    }
+
+    private void SetSelectionAnimation(GravityDirection direction, Bounds bounds)
+    {
+        Transform transform = _selectionSprite.transform;
+        switch (direction)
+        {
+            case GravityDirection.NORTH:
+                transform.position = bounds.center;
+                return;
+            case GravityDirection.SOUTH:
+                return;
+            case GravityDirection.EAST:
+                return;
+            case GravityDirection.WEST:
+                return;
+            default:
+                return;
+        }
     }
 
     private void setSelectionAnimation(GravityDirection direction)

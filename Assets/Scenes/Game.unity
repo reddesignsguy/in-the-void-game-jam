@@ -135176,6 +135176,7 @@ MonoBehaviour:
   GravitySelectorUI: {fileID: 784431665}
   _soundManager: {fileID: 1218823338}
   _postProcessingManager: {fileID: 1601206018}
+  _selectionSprite: {fileID: 1980471995}
 --- !u!4 &1203176326
 Transform:
   m_ObjectHideFlags: 0
@@ -139104,8 +139105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839045981}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -0.357, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.009983987, w: 0.9999502}
+  m_LocalPosition: {x: 0.03, y: -0.433, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -139147,10 +139148,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 24.9505
-  m_PointLightOuterAngle: 185.34653
+  m_PointLightInnerAngle: 17.480003
+  m_PointLightOuterAngle: 133.61
   m_PointLightInnerRadius: 0.54
-  m_PointLightOuterRadius: 6.15
+  m_PointLightOuterRadius: 4.0259743
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -140256,14 +140257,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980471995}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.13, y: -17.37, z: -0.088054426}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 7.81, y: -18.74, z: -0.088054426}
   m_LocalScale: {x: 1.7021551, y: 2.3479123, z: 1.5834}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1839045982}
   m_Father: {fileID: 784431666}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1980471997
 SpriteRenderer:
   m_ObjectHideFlags: 0
