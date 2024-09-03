@@ -42,7 +42,10 @@ public class GravitySelector : MonoBehaviour
         _interactableInstanceID = objID;
 
         // Initialize gravity selector
-        GravitySelectorUI.SetActive(true);
+        //GravitySelectorUI.SetActive(true);
+
+        // Set up selection FX
+        _selectionSprite.SetActive(true);
 
         // Annoying edge case: Just ignore
         objectPos.y += halfOfObjHeight;
@@ -97,6 +100,7 @@ public class GravitySelector : MonoBehaviour
 
         // Gravity selector logic
         GravitySelectorUI.SetActive(false);
+        _selectionSprite.SetActive(false);
 
         // Time logic
         pauseTime(false);
