@@ -41,12 +41,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Rotation: 0
-    - _Scale: 1.53
+    - _Aspect_Ratio: 0.38808823
+    - _Rotation: 180
+    - _Scale: -1.9
     - _Size: 4.77
     - _Speed: 0.75
     m_Colors:
     - _Direction: {r: 0, g: -1, b: 0, a: 0}
+    - _Resolution: {r: 4.08, g: 1.5834, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2739493455286941572
 MonoBehaviour:
