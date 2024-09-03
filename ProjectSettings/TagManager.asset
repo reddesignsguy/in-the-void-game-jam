@@ -58,3 +58,6 @@ TagManager:
   - name: Particles
     uniqueID: 468750343
     locked: 0
+  - name: Gravity Selection
+    uniqueID: 2698288247
+    locked: 0
