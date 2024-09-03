@@ -141,7 +141,7 @@ public class GravitySelector : MonoBehaviour
         if (direction != _selectedGravityDirection)
         {
             SetSelectionAnimation(direction, bounds);
-            setSelectionAnimation(direction);
+            //setSelectionAnimation(direction);
         }
             
 
@@ -152,16 +152,39 @@ public class GravitySelector : MonoBehaviour
     private void SetSelectionAnimation(GravityDirection direction, Bounds bounds)
     {
         Transform transform = _selectionSprite.transform;
+        transform.rotation = Quaternion.identity;
+
+
+        Bounds selectionSpriteBounds = _selectionSprite.GetComponent<SpriteRenderer>().bounds;
+
+        float selectionSpriteHeight = selectionSpriteBounds.size.y;
+        float objectHeight = bounds.size.y;
+
+        Vector2 offset = new Vector2(0, selectionSpriteHeight/2 + objectHeight/2);
+
+        float selectionSpriteWidth = selectionSpriteBounds.size.x;
+        float objectWidth = bounds.size.x;
+
+        Vector3 scaleMultiplier = new Vector3(objectWidth / selectionSpriteWidth, 1, 1);
+        
+        transform.localScale = Vector3.Scale(transform.localScale, scaleMultiplier);
+
+        transform.position = (Vector2)bounds.center + offset;
+
+        // Rotations are done counter clock wise
         switch (direction)
         {
             case GravityDirection.NORTH:
-                transform.position = bounds.center;
+                transform.RotateAround(bounds.center, Vector3.forward, 0);
                 return;
             case GravityDirection.SOUTH:
+                transform.RotateAround(bounds.center, Vector3.forward, 180);
                 return;
             case GravityDirection.EAST:
+                transform.RotateAround(bounds.center, Vector3.forward, 270);
                 return;
             case GravityDirection.WEST:
+                transform.RotateAround(bounds.center, Vector3.forward, 90);
                 return;
             default:
                 return;
