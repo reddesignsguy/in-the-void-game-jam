@@ -20,6 +20,13 @@ public class GravityVisualManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             _additionalSprites.Add(Instantiate(_selectionSprite));
+
+        }
+
+        // All additional sprites are always inverted
+        foreach (GameObject sprite in _additionalSprites)
+        {
+            SetDirectionInverted(sprite, true);
         }
     }
 
@@ -41,12 +48,13 @@ public class GravityVisualManager : MonoBehaviour
 
     public void SetSelectionAnimation(GravityDirection direction, Bounds objectBounds)
     {
+        SetDirectionInverted(_selectionSprite, false);
         UpdateSpriteVisibility(direction);
 
         Transform selectionSpriteTransform = _selectionSprite.transform;
         selectionSpriteTransform.rotation = Quaternion.identity;
 
-        ResetSpritePosition(_selectionSprite, objectBounds);
+        ResetSpriteTransform(_selectionSprite, objectBounds);
 
         // Rotations are done counter clock wise
         switch (direction)
@@ -64,6 +72,7 @@ public class GravityVisualManager : MonoBehaviour
                 selectionSpriteTransform.RotateAround(objectBounds.center, Vector3.forward, 90);
                 return;
             default:
+                SetDirectionInverted(_selectionSprite, true);
                 // Place the sprites around the center of the boudns
                 for (int i = 0; i < 3; i ++)
                 {
@@ -99,7 +108,7 @@ public class GravityVisualManager : MonoBehaviour
     /* Moves the selection sprite to the center of the provided bounds of the reference sprite
      @param objectbounds  Bounds  Bounds of the reference sprite
     */
-    private void ResetSpritePosition(GameObject sprite, Bounds objectBounds)
+    private void ResetSpriteTransform(GameObject sprite, Bounds objectBounds)
     {
         Transform transform = sprite.transform;
         Bounds selectionSpriteBounds = sprite.GetComponent<SpriteRenderer>().bounds;
@@ -166,5 +175,19 @@ public class GravityVisualManager : MonoBehaviour
         // Pass unscaled time variable to shader
         SpriteRenderer renderer = sprite.GetComponent<SpriteRenderer>();
         renderer.material.SetFloat("_UnscaledTime", Time.unscaledTime);
+    }
+
+    private void SetDirectionInverted(GameObject sprite, bool inverted)
+    {
+        Vector2 direction = inverted ? new Vector2(0, 1) : new Vector2(0, -1);
+
+        UpdateDirectionMaterialProperty(sprite, direction);
+    }
+
+    private void UpdateDirectionMaterialProperty(GameObject sprite, Vector2 direction)
+    {
+        // Pass unscaled time variable to shader
+        SpriteRenderer renderer = sprite.GetComponent<SpriteRenderer>();
+        renderer.material.SetVector("_Direction", direction);
     }
 }

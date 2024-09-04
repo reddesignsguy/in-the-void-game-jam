@@ -49,6 +49,8 @@ Material:
     - _UnscaledTime: 0
     m_Colors:
     - _Direction: {r: 0, g: -1, b: 0, a: 0}
+    - _Displacement: {r: 0.93, g: 0, b: 0, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Resolution: {r: 4.08, g: 1.5834, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2739493455286941572
