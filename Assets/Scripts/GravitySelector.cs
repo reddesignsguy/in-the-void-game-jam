@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GravitySelector : MonoBehaviour
@@ -73,15 +74,23 @@ public class GravitySelector : MonoBehaviour
      */
     private IEnumerator SelectGravity(Vector2 centerOfSelector, Bounds objectBounds)
     {
+        GravityDirection direction = CalculateSelectedDirection(centerOfSelector);
+
+        // Called before the loop to initialize the correct direction animation
+        SetSelectionAnimation(direction, objectBounds);
+        setSelectedGravity(direction);
 
         while (true)
         {
-            Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
+            direction = CalculateSelectedDirection(centerOfSelector);
 
-            // Check which cardinal direction the player wants to select
-            Vector2 directionVector = (Vector2)mousePos - centerOfSelector;
-            GravityDirection direction = vectorToSelectedDirection(directionVector);
-            setSelectedGravity(direction, objectBounds);
+            // If a new dir is selected, play appropriate anims
+            if (direction != _selectedGravityDirection)
+            {
+                SetSelectionAnimation(direction, objectBounds);
+                //setSelectionAnimation(direction);
+            }
+            setSelectedGravity(direction);
 
             // Pass unscaled time variable to shader
             SpriteRenderer renderer = _selectionSprite.GetComponent<SpriteRenderer>();
@@ -89,6 +98,17 @@ public class GravitySelector : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    private GravityDirection CalculateSelectedDirection(Vector2 centerOfSelector)
+    {
+        Vector3 mousePos = MouseHelper._instance.GetMouseWorldPosition();
+
+        // Check which cardinal direction the player wants to select
+        Vector2 directionVector = (Vector2) mousePos - centerOfSelector;
+        GravityDirection direction = VectorToSelectedDirection(directionVector);
+
+        return direction;
     }
 
     public void EndSelection()
@@ -123,7 +143,7 @@ public class GravitySelector : MonoBehaviour
             i.e: a horizontal one... and the true is vice versa.
         3. The sign of the corresponding vector component indicates which of the two directions-- in the case of the above, west or east-- is the selected direction
     */
-    private GravityDirection vectorToSelectedDirection(Vector2 vector)
+    private GravityDirection VectorToSelectedDirection(Vector2 vector)
     {
         // Edge: Vector not large enough
         if (Mathf.Abs(vector.x) < 0.45 && Mathf.Abs(vector.y) < 0.45)
@@ -140,19 +160,10 @@ public class GravitySelector : MonoBehaviour
             return vector.y > 0 ? GravityDirection.NORTH : GravityDirection.SOUTH; // Determine which vertical dir
     }
 
-    /* Updates gravity selection UI and the temporary gravity variable*/
-    private void setSelectedGravity(GravityDirection direction, Bounds bounds)
+    /* Updates the temporary gravity variable*/
+    private void setSelectedGravity(GravityDirection direction)
     {
-        // If a new dir is selected, play appropriate anims
-        if (direction != _selectedGravityDirection)
-        {
-            SetSelectionAnimation(direction, bounds);
-            //setSelectionAnimation(direction);
-        }
-            
-
         _selectedGravityDirection = direction;
-
     }
 
     private void SetSelectionAnimation(GravityDirection direction, Bounds objectBounds)
