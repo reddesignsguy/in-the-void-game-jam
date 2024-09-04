@@ -12,7 +12,6 @@ public class GravityVisualManager : MonoBehaviour
 
     private void Awake()
     {
-
         _selectionSprite.SetActive(false);
 
         _additionalSprites = new List<GameObject>();
@@ -26,7 +25,7 @@ public class GravityVisualManager : MonoBehaviour
         // All additional sprites are always inverted
         foreach (GameObject sprite in _additionalSprites)
         {
-            SetDirectionInverted(sprite, true);
+            SetMaterialInverted(sprite, true);
         }
     }
 
@@ -48,7 +47,7 @@ public class GravityVisualManager : MonoBehaviour
 
     public void SetSelectionAnimation(GravityDirection direction, Bounds objectBounds)
     {
-        SetDirectionInverted(_selectionSprite, false);
+        SetMaterialInverted(_selectionSprite, false);
         UpdateSpriteVisibility(direction);
 
         Transform selectionSpriteTransform = _selectionSprite.transform;
@@ -72,7 +71,7 @@ public class GravityVisualManager : MonoBehaviour
                 selectionSpriteTransform.RotateAround(objectBounds.center, Vector3.forward, 90);
                 return;
             default:
-                SetDirectionInverted(_selectionSprite, true);
+                SetMaterialInverted(_selectionSprite, true);
                 // Place the sprites around the center of the boudns
                 for (int i = 0; i < 3; i ++)
                 {
@@ -158,36 +157,45 @@ public class GravityVisualManager : MonoBehaviour
 
     private void Update()
     {
+        if (!active) return;
 
         if (_selectionSprite.activeSelf)
         {
-            UpdateTimeMaterialProperty(_selectionSprite);
+            SetTimeMaterialProperty(_selectionSprite);
         }
 
         foreach(GameObject sprite in _additionalSprites)
         {
-            UpdateTimeMaterialProperty(sprite);
+            SetTimeMaterialProperty(sprite);
         }
     }
 
-    private void UpdateTimeMaterialProperty(GameObject sprite)
+    private void SetMaterialInverted(GameObject sprite, bool inverted)
+    {
+        Vector2 direction = inverted ? new Vector2(0, 1) : new Vector2(0, -1);
+        Vector2 displacement = inverted ? new Vector2(0.93f, 0) : new Vector2(0, 0);
+
+        SetDirectionMaterialProperty(sprite, direction);
+        SetDisplacementMaterialProperty(sprite, displacement);
+    }
+
+    private void SetTimeMaterialProperty(GameObject sprite)
     {
         // Pass unscaled time variable to shader
         SpriteRenderer renderer = sprite.GetComponent<SpriteRenderer>();
         renderer.material.SetFloat("_UnscaledTime", Time.unscaledTime);
     }
 
-    private void SetDirectionInverted(GameObject sprite, bool inverted)
-    {
-        Vector2 direction = inverted ? new Vector2(0, 1) : new Vector2(0, -1);
-
-        UpdateDirectionMaterialProperty(sprite, direction);
-    }
-
-    private void UpdateDirectionMaterialProperty(GameObject sprite, Vector2 direction)
+    private void SetDirectionMaterialProperty(GameObject sprite, Vector2 direction)
     {
         // Pass unscaled time variable to shader
         SpriteRenderer renderer = sprite.GetComponent<SpriteRenderer>();
         renderer.material.SetVector("_Direction", direction);
+    }
+
+    private void SetDisplacementMaterialProperty(GameObject sprite, Vector2 displacement)
+    {
+        SpriteRenderer renderer = sprite.GetComponent<SpriteRenderer>();
+        renderer.material.SetVector("_Displacement", displacement);
     }
 }
