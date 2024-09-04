@@ -25,7 +25,6 @@ public class GravitySelectionPostProcessingManager : MonoBehaviour
 
     public void ResetSaturation()
     {
-        print("Desaturating");
         StartCoroutine(IntepolateSaturation(_desaturationValue, 0));
     }
 
