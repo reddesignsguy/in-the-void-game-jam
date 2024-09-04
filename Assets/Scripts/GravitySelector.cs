@@ -74,21 +74,19 @@ public class GravitySelector : MonoBehaviour
      */
     private IEnumerator SelectGravity(Vector2 centerOfSelector, Bounds objectBounds)
     {
-        GravityDirection direction = CalculateSelectedDirection(centerOfSelector);
+        GravityDirection direction;
 
-        // Called before the loop to initialize the correct direction animation
-        SetSelectionAnimation(direction, objectBounds);
-        setSelectedGravity(direction);
-
+        bool firstPass = true;
         while (true)
         {
             direction = CalculateSelectedDirection(centerOfSelector);
 
-            // If a new dir is selected, play appropriate anims
-            if (direction != _selectedGravityDirection)
+            // If the selected direction is different from the last one or if this is the first direction chosen, play the appropriate anims
+            if (firstPass || direction != _selectedGravityDirection)
             {
                 SetSelectionAnimation(direction, objectBounds);
                 //setSelectionAnimation(direction);
+                firstPass = false;
             }
             setSelectedGravity(direction);
 
