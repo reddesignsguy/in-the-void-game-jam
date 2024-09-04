@@ -74,12 +74,10 @@ public class GravitySelector : MonoBehaviour
      */
     private IEnumerator SelectGravity(Vector2 centerOfSelector, Bounds objectBounds)
     {
-        GravityDirection direction;
-
         bool firstPass = true;
         while (true)
         {
-            direction = CalculateSelectedDirection(centerOfSelector);
+            GravityDirection direction = CalculateSelectedDirection(centerOfSelector);
 
             // If the selected direction is different from the last one or if this is the first direction chosen, play the appropriate anims
             if (firstPass || direction != _selectedGravityDirection)
@@ -88,7 +86,7 @@ public class GravitySelector : MonoBehaviour
                 //setSelectionAnimation(direction);
                 firstPass = false;
             }
-            setSelectedGravity(direction);
+            SetSelectedGravity(direction);
 
             // Pass unscaled time variable to shader
             SpriteRenderer renderer = _selectionSprite.GetComponent<SpriteRenderer>();
@@ -159,7 +157,7 @@ public class GravitySelector : MonoBehaviour
     }
 
     /* Updates the temporary gravity variable*/
-    private void setSelectedGravity(GravityDirection direction)
+    private void SetSelectedGravity(GravityDirection direction)
     {
         _selectedGravityDirection = direction;
     }
