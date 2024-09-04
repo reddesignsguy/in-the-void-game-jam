@@ -11,7 +11,8 @@ public class GravitySelector : MonoBehaviour
     [SerializeField] private GameObject GravitySelectorUI;
     [SerializeField] private GravitySelectionSoundManager _soundManager;
     [SerializeField] private GravitySelectionPostProcessingManager _postProcessingManager;
-    [SerializeField] private GameObject _selectionSprite;
+    [SerializeField] private GravityVisualManager _visualManager;
+    //[SerializeField] private GameObject _selectionSprite;
     private Animator _gravitySelectorAnimator;
 
     // Fields
@@ -46,14 +47,12 @@ public class GravitySelector : MonoBehaviour
         //GravitySelectorUI.SetActive(true);
 
         // Set up selection FX
-        _selectionSprite.SetActive(true);
+        _visualManager.SetActive(true);
 
         // Annoying edge case: Just ignore
         objectPos.y += halfOfObjHeight;
         GravitySelectorUI.transform.position = objectPos;
         objectPos.y -= halfOfObjHeight;
-
-        ResetSelectionSpritePosition(objectBounds);
 
         // Handle gravity selection separately
         SelectGravityCoroutine = StartCoroutine(SelectGravity(objectPos, objectBounds));
@@ -82,15 +81,11 @@ public class GravitySelector : MonoBehaviour
             // If the selected direction is different from the last one or if this is the first direction chosen, play the appropriate anims
             if (firstPass || direction != _selectedGravityDirection)
             {
-                SetSelectionAnimation(direction, objectBounds);
+                _visualManager.SetSelectionAnimation(direction, objectBounds);
                 //setSelectionAnimation(direction);
                 firstPass = false;
             }
             SetSelectedGravity(direction);
-
-            // Pass unscaled time variable to shader
-            SpriteRenderer renderer = _selectionSprite.GetComponent<SpriteRenderer>();
-            renderer.material.SetFloat("_UnscaledTime", Time.unscaledTime);
 
             yield return new WaitForEndOfFrame();
         }
@@ -118,7 +113,7 @@ public class GravitySelector : MonoBehaviour
 
         // Gravity selector logic
         GravitySelectorUI.SetActive(false);
-        _selectionSprite.SetActive(false);
+        _visualManager.SetActive(false);
 
         // Time logic
         pauseTime(false);
@@ -162,85 +157,6 @@ public class GravitySelector : MonoBehaviour
         _selectedGravityDirection = direction;
     }
 
-    private void SetSelectionAnimation(GravityDirection direction, Bounds objectBounds)
-    {
-        Transform transform = _selectionSprite.transform;
-        transform.rotation = Quaternion.identity;
-
-        ResetSelectionSpritePosition(objectBounds);
-
-        // Rotations are done counter clock wise
-        switch (direction)
-        {
-            case GravityDirection.NORTH:
-                transform.RotateAround(objectBounds.center, Vector3.forward, 0);
-                return;
-            case GravityDirection.SOUTH:
-                transform.RotateAround(objectBounds.center, Vector3.forward, 180);
-                return;
-            case GravityDirection.EAST:
-                transform.RotateAround(objectBounds.center, Vector3.forward, 270);
-                return;
-            case GravityDirection.WEST:
-                transform.RotateAround(objectBounds.center, Vector3.forward, 90);
-                return;
-            default:
-                return;
-        }
-    }
-
-
-    /* Moves the selection sprite to the center of the provided bounds of the reference sprite
-     @param objectbounds  Bounds  Bounds of the reference sprite
-    */
-    private void ResetSelectionSpritePosition(Bounds objectBounds)
-    {
-        Transform transform = _selectionSprite.transform;
-        Bounds selectionSpriteBounds = _selectionSprite.GetComponent<SpriteRenderer>().bounds;
-
-        // Get adjustments
-        Vector2 offset = GetSelectionSpriteOffset(objectBounds, selectionSpriteBounds);
-        Vector3 scaleMultiplier = GetSelectionSpriteScaleMultiplier(objectBounds, selectionSpriteBounds);
-
-        // Apply adjustments
-        transform.localScale = Vector3.Scale(transform.localScale, scaleMultiplier);
-        transform.position = (Vector2)objectBounds.center + offset;
-    }
-
-
-    /* Gets the offset vector needed to place the selection sprite just above the reference sprite
-     * 
-     @param objectBounds  Bounds   Bounds of the reference sprite
-     @params selectionSpriteBounds  Bounds  Bounds of the selection sprite
-
-     Returns the offset as a Vector2
-     */
-    private Vector2 GetSelectionSpriteOffset(Bounds objectBounds, Bounds selectionSpriteBounds)
-    {
-        float selectionSpriteHeight = selectionSpriteBounds.size.y;
-        float objectHeight = objectBounds.size.y;
-
-        Vector2 offset = new Vector2(0, selectionSpriteHeight / 2 + objectHeight / 2);
-        return offset;
-    }
-
-
-    /* Gets the scale multiplier that scales the selection sprite's WIDTH to the reference sprite's WIDTH
-     * 
-     @param objectBounds  Bounds   Bounds of the reference sprite
-     @params selectionSpriteBounds  Bounds  Bounds of the selection sprite
-
-     Returns the multiplier as a Vector3
-     */
-    private Vector3 GetSelectionSpriteScaleMultiplier(Bounds objectBounds, Bounds selectionSpriteBounds)
-    {
-        // Get WIDTHS, not heights
-        float selectionSpriteWidth = selectionSpriteBounds.size.x;
-        float objectWidth = objectBounds.size.x;
-
-        Vector3 scaleMultiplier = new Vector3(objectWidth / selectionSpriteWidth, 1, 1);
-        return scaleMultiplier;
-    }
 
     private void setSelectionAnimation(GravityDirection direction)
     {
