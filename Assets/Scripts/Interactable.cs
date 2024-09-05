@@ -63,6 +63,11 @@ public class Interactable : MonoBehaviour
         initializeMass();
     }
 
+    private void Update()
+    {
+        UpdateHighlightOverlay();
+    }
+
     private void FixedUpdate()
     {
         // The force magnitude applied to the interactable can be ZERO
@@ -137,21 +142,23 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void OnMouseOver()
+    private void UpdateHighlightOverlay()
     {
-        if (!_player.mouseWithinRadius() && !_beingControlled) {
+        bool isMouseOver = _collider.OverlapPoint(MouseHelper._instance.GetMouseWorldPosition());
+
+        if (!isMouseOver)
+        {
+            disableHighlight();
+            return;
+        }
+
+        if (!_player.mouseWithinRadius() && !_beingControlled)
+        {
             disableHighlight();
             return;
         }
 
         enableHighlight();
-    }
-
-    private void OnMouseExit()
-    {
-        if (_beingControlled) return;
-
-        disableHighlight();
     }
 
     public void HandleInteractEvent(Vector2 mousePos)
