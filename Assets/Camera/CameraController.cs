@@ -23,14 +23,6 @@ public class CameraController : MonoBehaviour
         CameraShaker.Instance.ShakeOnce(1f, 0.3f, .1f, 3f);
     }
 
-    private void Update()
-    {
-        if (Time.fixedTime > 5 && Time.fixedTime < 6)
-        {
-            CameraShaker.Instance.ShakeOnce(1f, 0.7f, .1f, 3f);
-        }
-    }
-
     void FixedUpdate()
     {
         transform.position = player.transform.position + offset;

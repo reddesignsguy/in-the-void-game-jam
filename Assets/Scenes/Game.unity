@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 1876619260}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71912,7 +71916,7 @@ GameObject:
   - component: {fileID: 30038410}
   m_Layer: 0
   m_Name: Light 2D (17)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72087,6 +72091,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 161305235}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -72504,7 +72512,7 @@ GameObject:
   - component: {fileID: 166156223}
   m_Layer: 0
   m_Name: Light 2D (5)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72801,7 +72809,7 @@ GameObject:
   - component: {fileID: 221214031}
   m_Layer: 0
   m_Name: Light 2D (10)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73110,7 +73118,7 @@ GameObject:
   - component: {fileID: 253840742}
   m_Layer: 0
   m_Name: Light 2D (33)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73256,6 +73264,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 566565014}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74052,7 +74064,7 @@ GameObject:
   - component: {fileID: 302278211}
   m_Layer: 0
   m_Name: Light 2D (31)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74171,7 +74183,7 @@ GameObject:
   - component: {fileID: 309360704}
   m_Layer: 0
   m_Name: Light 2D (12)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74424,7 +74436,7 @@ GameObject:
   - component: {fileID: 342300105}
   m_Layer: 0
   m_Name: Light 2D (7)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74506,7 +74518,7 @@ GameObject:
   - component: {fileID: 366672418}
   m_Layer: 0
   m_Name: Light 2D (15)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74588,7 +74600,7 @@ GameObject:
   - component: {fileID: 379871666}
   m_Layer: 0
   m_Name: Light 2D
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74718,6 +74730,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 243233029}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75878,6 +75894,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 113107928}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75948,6 +75968,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 101333000}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75965,7 +75989,7 @@ GameObject:
   - component: {fileID: 439887705}
   m_Layer: 0
   m_Name: Light 2D (2)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76047,7 +76071,7 @@ GameObject:
   - component: {fileID: 461469469}
   m_Layer: 0
   m_Name: Light 2D (17)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76173,7 +76197,7 @@ GameObject:
   - component: {fileID: 515442510}
   m_Layer: 0
   m_Name: Light 2D (18)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76579,7 +76603,7 @@ GameObject:
   - component: {fileID: 538393020}
   m_Layer: 0
   m_Name: Light 2D (1)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76661,7 +76685,7 @@ GameObject:
   - component: {fileID: 548094510}
   m_Layer: 0
   m_Name: Light 2D (18)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81833,7 +81857,7 @@ GameObject:
   - component: {fileID: 591433759}
   m_Layer: 0
   m_Name: Light 2D (20)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82001,7 +82025,7 @@ GameObject:
   - component: {fileID: 601670904}
   m_Layer: 0
   m_Name: Light 2D (26)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82120,7 +82144,7 @@ GameObject:
   - component: {fileID: 655273184}
   m_Layer: 0
   m_Name: Light 2D (23)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82434,7 +82458,7 @@ GameObject:
   - component: {fileID: 748866675}
   m_Layer: 0
   m_Name: Light 2D (25)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82516,7 +82540,7 @@ GameObject:
   - component: {fileID: 755481963}
   m_Layer: 0
   m_Name: Light 2D (8)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82664,7 +82688,7 @@ GameObject:
   - component: {fileID: 767545286}
   m_Layer: 0
   m_Name: Light 2D (34)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82746,7 +82770,7 @@ GameObject:
   - component: {fileID: 775103520}
   m_Layer: 0
   m_Name: Light 2D (4)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82980,7 +83004,7 @@ GameObject:
   - component: {fileID: 804092925}
   m_Layer: 0
   m_Name: Light 2D (20)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83062,7 +83086,7 @@ GameObject:
   - component: {fileID: 805943557}
   m_Layer: 0
   m_Name: Light 2D (1)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83197,6 +83221,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 1521514600}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -83378,6 +83406,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 1794364241}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -133020,7 +133052,7 @@ GameObject:
   - component: {fileID: 929568549}
   m_Layer: 0
   m_Name: Light 2D (24)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133523,6 +133555,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 847592973}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -133611,7 +133647,7 @@ GameObject:
   - component: {fileID: 1017611085}
   m_Layer: 0
   m_Name: Light 2D (9)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133941,7 +133977,7 @@ GameObject:
   - component: {fileID: 1054501325}
   m_Layer: 0
   m_Name: Light 2D (36)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134198,7 +134234,7 @@ GameObject:
   - component: {fileID: 1083057903}
   m_Layer: 0
   m_Name: Light 2D (13)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134419,7 +134455,7 @@ GameObject:
   - component: {fileID: 1100368428}
   m_Layer: 0
   m_Name: Light 2D (30)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134501,7 +134537,7 @@ GameObject:
   - component: {fileID: 1117144913}
   m_Layer: 0
   m_Name: Light 2D (35)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134631,6 +134667,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 1097917476}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -134780,7 +134820,7 @@ AudioSource:
   m_GameObject: {fileID: 1126944919}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 872051f2acddd44cc882a55ce427f03f, type: 2}
+  OutputAudioMixerGroup: {fileID: -7917139771303197, guid: 872051f2acddd44cc882a55ce427f03f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 64c8e0c0a46b242418afb2a7da69982a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -134936,7 +134976,7 @@ AudioSource:
   m_GameObject: {fileID: 1126944919}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7917139771303197, guid: 872051f2acddd44cc882a55ce427f03f, type: 2}
   m_audioClip: {fileID: 8300000, guid: eaa4562ff0a1c4bbe9ea725b6ae88e7d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -135230,7 +135270,7 @@ GameObject:
   - component: {fileID: 1155097875}
   m_Layer: 0
   m_Name: Light 2D (29)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135728,7 +135768,7 @@ GameObject:
   - component: {fileID: 1338879495}
   m_Layer: 0
   m_Name: Light 2D
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135810,7 +135850,7 @@ GameObject:
   - component: {fileID: 1345952684}
   m_Layer: 0
   m_Name: Light 2D (11)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135985,7 +136025,7 @@ GameObject:
   - component: {fileID: 1357386717}
   m_Layer: 0
   m_Name: Light 2D (27)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136253,7 +136293,7 @@ GameObject:
   - component: {fileID: 1410989988}
   m_Layer: 0
   m_Name: Light 2D (21)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136363,6 +136403,248 @@ Transform:
   - {fileID: 1498330299}
   m_Father: {fileID: 1321058195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1458581512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458581514}
+  - component: {fileID: 1458581513}
+  - component: {fileID: 1458581516}
+  - component: {fileID: 1458581515}
+  m_Layer: 0
+  m_Name: RumbleFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1458581513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458581512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d01233f943774dd5a780087f7612ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rumbleAudio: {fileID: 1458581516}
+  _creakAudio: {fileID: 1458581515}
+  _duration: 3
+  _shakeEndFadePercent: 0.75
+--- !u!4 &1458581514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458581512}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.476367, y: 1.1471186, z: 0.064216815}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1458581515
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458581512}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -335530922574843520, guid: 872051f2acddd44cc882a55ce427f03f, type: 2}
+  m_audioClip: {fileID: 8300000, guid: d86b736f12a704d0f89199e52cc18488, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1458581516
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458581512}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 7800062068848349081, guid: 872051f2acddd44cc882a55ce427f03f, type: 2}
+  m_audioClip: {fileID: 8300000, guid: a1a50f79d465542b29cc06b3a918a1f4, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1481354974
 GameObject:
   m_ObjectHideFlags: 0
@@ -136375,7 +136657,7 @@ GameObject:
   - component: {fileID: 1481354976}
   m_Layer: 0
   m_Name: Light 2D (21)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136609,7 +136891,7 @@ GameObject:
   - component: {fileID: 1492919591}
   m_Layer: 0
   m_Name: Light 2D (3)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136805,6 +137087,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 875172761}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -136932,7 +137218,7 @@ GameObject:
   - component: {fileID: 1522334667}
   m_Layer: 0
   m_Name: Light 2D
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137301,6 +137587,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 1739447508}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -137599,7 +137889,7 @@ GameObject:
   - component: {fileID: 1594678201}
   m_Layer: 0
   m_Name: Light 2D (6)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137728,7 +138018,7 @@ GameObject:
   - component: {fileID: 1610085685}
   m_Layer: 0
   m_Name: Light 2D (16)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137894,6 +138184,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 202223987}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -137916,7 +138210,7 @@ GameObject:
   - component: {fileID: 1643071435}
   m_Layer: 0
   m_Name: Light 2D (28)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137998,7 +138292,7 @@ GameObject:
   - component: {fileID: 1649994108}
   m_Layer: 0
   m_Name: Light 2D (32)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138080,7 +138374,7 @@ GameObject:
   - component: {fileID: 1655711679}
   m_Layer: 0
   m_Name: Light 2D (22)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138652,6 +138946,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 1118969798}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -138842,7 +139140,7 @@ GameObject:
   - component: {fileID: 1805514800}
   m_Layer: 0
   m_Name: Light 2D (16)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139718,7 +140016,7 @@ GameObject:
   - component: {fileID: 1937660330}
   m_Layer: 0
   m_Name: Light 2D (19)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139800,7 +140098,7 @@ GameObject:
   - component: {fileID: 1945487329}
   m_Layer: 0
   m_Name: Light 2D (14)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140930,6 +141228,10 @@ PrefabInstance:
       propertyPath: _door
       value: 
       objectReference: {fileID: 2035861943}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -140952,7 +141254,7 @@ GameObject:
   - component: {fileID: 2109966246}
   m_Layer: 0
   m_Name: Light 2D
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141034,7 +141336,7 @@ GameObject:
   - component: {fileID: 2111261318}
   m_Layer: 0
   m_Name: Light 2D (19)
-  m_TagString: Untagged
+  m_TagString: Background Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142120,6 +142422,10 @@ PrefabInstance:
       propertyPath: _offColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8563663049822259236, guid: 6459b21d958764888afa0a4d2bd3a5ae, type: 3}
+      propertyPath: m_TagString
+      value: Background Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -142193,5 +142499,6 @@ SceneRoots:
   - {fileID: 1525430667}
   - {fileID: 584366885}
   - {fileID: 2068580119}
+  - {fileID: 1458581514}
   - {fileID: 1126944920}
   - {fileID: 1501637866}

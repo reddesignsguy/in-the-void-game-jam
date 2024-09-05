@@ -5,9 +5,6 @@ using UnityEngine.Audio;
 
 public class GravitySelectionSoundManager : MonoBehaviour
 {
-    // References
-    public AudioMixer _mixer;
-
     // EQ Settings
     public float _volume = -20f;
     public float _distortion = 0.21f;
@@ -35,22 +32,28 @@ public class GravitySelectionSoundManager : MonoBehaviour
     {
         ClearSoundInterpolations();
 
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Volume", _defaultVolume, _volume)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Distortion", _defaultDistortion, _distortion)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Bass", _defaultBass, _bass)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Mids", _defaultMids, _mids)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Highs", _defaultHighs, _highs)));
+        var mixerHelper = AudioMixerHelper.Instance;
+
+        // IM SORRY DUDE!
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Volume", _defaultVolume, _volume, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Distortion", _defaultDistortion, _distortion, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Bass", _defaultBass, _bass, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Mids", _defaultMids, _mids, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Highs", _defaultHighs, _highs, _fadeDuration)));
     }
 
     public void Reset()
     {
         ClearSoundInterpolations();
 
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Volume", _volume, _defaultVolume)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Distortion", _distortion, _defaultDistortion)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Bass", _bass, _defaultBass)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Mids", _mids, _defaultMids)));
-        _runningSoundInterpolations.Add(StartCoroutine(InterpolateSoundSettings("Highs", _highs, _defaultHighs)));
+        var mixerHelper = AudioMixerHelper.Instance;
+
+        // AGAIN I AM SORRY
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Volume", _volume, _defaultVolume, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Distortion", _distortion, _defaultDistortion, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Bass", _bass, _defaultBass, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Mids", _mids, _defaultMids, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Highs", _highs, _defaultHighs, _fadeDuration)));
     }
 
     private void ClearSoundInterpolations()
@@ -64,20 +67,5 @@ public class GravitySelectionSoundManager : MonoBehaviour
         }
 
         _runningSoundInterpolations.Clear();
-    }
-
-    private IEnumerator InterpolateSoundSettings(string param, float start, float end)
-    {
-        float timeElapsed = 0f;
-
-        while (timeElapsed < _fadeDuration)
-        {
-            timeElapsed += Time.unscaledDeltaTime;
-            float t = timeElapsed / _fadeDuration;
-            float lerpedValue = Mathf.Lerp(start, end, t);
-            _mixer.SetFloat(param, lerpedValue);
-
-            yield return null;
-        }
     }
 }
