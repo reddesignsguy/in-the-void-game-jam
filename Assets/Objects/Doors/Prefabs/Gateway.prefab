@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3679620807885477285}
   - component: {fileID: 4371792634921817297}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4931235768698434779}
   - component: {fileID: 8073507200035658050}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: End1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4468007307140265842}
   - component: {fileID: 4319360031519713398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: End2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8820860033591781779}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gateway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 4066383286378607102}
   - component: {fileID: 3889316296083028815}
   - component: {fileID: 779836126105318208}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

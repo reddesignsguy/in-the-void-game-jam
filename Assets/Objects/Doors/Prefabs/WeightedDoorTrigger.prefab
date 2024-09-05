@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6692288884281121297}
   - component: {fileID: 7265633618500095549}
   - component: {fileID: 5276435413534277407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WeightedDoorTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4058673787927814808}
   - component: {fileID: 8818616199876552664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6376243812535707338}
   - component: {fileID: 4640809231574601000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
