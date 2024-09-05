@@ -32,14 +32,12 @@ public class GravitySelectionSoundManager : MonoBehaviour
     {
         ClearSoundInterpolations();
 
-        var mixerHelper = AudioMixerHelper.Instance;
-
         // IM SORRY DUDE!
-        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Volume", _defaultVolume, _volume, _fadeDuration)));
-        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Distortion", _defaultDistortion, _distortion, _fadeDuration)));
-        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Bass", _defaultBass, _bass, _fadeDuration)));
-        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Mids", _defaultMids, _mids, _fadeDuration)));
-        _runningSoundInterpolations.Add(StartCoroutine(mixerHelper.InterpolateSoundSettings("Highs", _defaultHighs, _highs, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(AudioMixerHelper.Instance.InterpolateSoundSettings("Volume", _defaultVolume, _volume, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(AudioMixerHelper.Instance.InterpolateSoundSettings("Distortion", _defaultDistortion, _distortion, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(AudioMixerHelper.Instance.InterpolateSoundSettings("Bass", _defaultBass, _bass, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(AudioMixerHelper.Instance.InterpolateSoundSettings("Mids", _defaultMids, _mids, _fadeDuration)));
+        _runningSoundInterpolations.Add(StartCoroutine(AudioMixerHelper.Instance.InterpolateSoundSettings("Highs", _defaultHighs, _highs, _fadeDuration)));
     }
 
     public void Reset()
@@ -58,9 +56,9 @@ public class GravitySelectionSoundManager : MonoBehaviour
 
     private void ClearSoundInterpolations()
     {
-        if (_runningSoundInterpolations.Count > 0)
+        foreach (Coroutine c in _runningSoundInterpolations)
         {
-            foreach (Coroutine c in _runningSoundInterpolations)
+            if (c == null)
             {
                 StopCoroutine(c);
             }

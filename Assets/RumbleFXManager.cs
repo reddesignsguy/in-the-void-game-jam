@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 
 public class RumbleFXManager : MonoBehaviour
 {
@@ -13,7 +13,8 @@ public class RumbleFXManager : MonoBehaviour
     [SerializeField] private AudioSource _rumbleAudio;
     [SerializeField] private AudioSource _creakAudio;
     [SerializeField] private float _duration = 0;
-    [SerializeField, Range(0,1)] private float _shakeEndFadePercent = 0.75f;
+    [SerializeField] private float _shakeStartFade = 0.4f;
+    [SerializeField] private float _shakeEndFade = 5f;
 
     private float _timer = 0;
     private float _fxStartTime = 10f;
@@ -40,8 +41,8 @@ public class RumbleFXManager : MonoBehaviour
 
     private IEnumerator StartRumble()
     {
-        float startEndFade = 1 - _shakeEndFadePercent;
-        CameraShaker.Instance.ShakeOnce(0.8f, 0.8f, startEndFade, _shakeEndFadePercent);
+        CameraShakeInstance shake = CameraShaker.Instance.StartShake(3f, 1.3f, _shakeStartFade);
+
 
         StartRumbleAudioSequence();
 
@@ -51,10 +52,14 @@ public class RumbleFXManager : MonoBehaviour
         {
             rumbleTimer += Time.unscaledDeltaTime;
 
+            FlickerLights();
             yield return null;
         }
 
         EndRumbleAudioSequence();
+        ResetLights();
+
+        shake.StartFadeOut(_shakeEndFade);
     }
 
     private void StartRumbleAudioSequence()
@@ -81,9 +86,27 @@ public class RumbleFXManager : MonoBehaviour
         _creakAudio.Stop();
     }
 
-    private void FlickerLights(float duration)
+    /* Flickers lights by changing their color randomly between 2 options: black or white*/
+    private void FlickerLights()
     {
+        foreach (GameObject light in _backgroundLights)
+        {
+            float rand = Random.Range(-1, 1);
+            Color newColor = rand < 0 ? new Color(1,1,1): new Color(0, 0, 0);
 
+            Light2D settings = light.GetComponent<Light2D>();
+            settings.color = newColor;
+        }
+    }
+
+    /* Resets lights back to white */
+    private void ResetLights()
+    {
+        foreach (GameObject light in _backgroundLights)
+        {
+            Light2D settings = light.GetComponent<Light2D>();
+            settings.color = new Color(1, 1, 1);
+        }
     }
 
 

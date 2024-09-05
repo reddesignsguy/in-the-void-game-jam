@@ -23,7 +23,7 @@ public class AudioMixerHelper : MonoBehaviour
     }
 
     
-    public IEnumerator InterpolateSoundSettings(string param, float duration, float start, float end)
+    public IEnumerator InterpolateSoundSettings(string param, float start, float end, float duration)
     {
         float timeElapsed = 0f;
 

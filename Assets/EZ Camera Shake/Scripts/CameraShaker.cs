@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace EZCameraShake
 {
@@ -178,6 +179,11 @@ namespace EZCameraShake
         void OnDestroy()
         {
             instanceList.Remove(gameObject.name);
+        }
+
+        internal void StartShake(float v1, float v2, float shakeStartFade, float shakeEndFade)
+        {
+            throw new NotImplementedException();
         }
     }
 }
