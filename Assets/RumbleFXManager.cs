@@ -73,7 +73,7 @@ public class RumbleFXManager : MonoBehaviour
 
     private void EndRumbleAudioSequence()
     {
-        StartCoroutine(AudioMixerHelper.Instance.InterpolateSoundSettings("Music_Volume", -20f, 0, 0.1f));
+        StartCoroutine(AudioMixerHelper.Instance.InterpolateSoundSettings("Music_Volume", -20f, 0, 1.5f));
         StopRumbleSounds();
     }
 
